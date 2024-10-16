@@ -13,7 +13,7 @@
 #ifndef PHONEBOOK_HPP
 # define PHONEBOOK_HPP
 
-#include "contact.hpp"
+#include "Contact.hpp"
 
 #define RESET   "\033[0m"
 #define RED     "\033[31m"
@@ -26,8 +26,8 @@ class PhoneBook
     Contact Contacts[8];
     int i;
     void add();
-    void seaarch();
-    PhoneBook() : i(0) {}
+    void search();
+    PhoneBook() : i(1) {}
 };
 
 #endif

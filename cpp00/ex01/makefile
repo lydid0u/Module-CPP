@@ -1,11 +1,11 @@
 
 NAME	= phonebook
-SRC		= phonebook.cpp \
-			contact.cpp \
+SRC		= PhoneBook.cpp \
+			Contact.cpp \
 			
 OBJ		= $(SRC:%.cpp=%.o)
 INCL	= PhoneBook.hpp \
-			contact.hpp
+			Contact.hpp
 CC		= c++
 FLAGS	= -Wall -Wextra -Werror -std=c++98
 

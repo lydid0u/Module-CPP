@@ -45,7 +45,7 @@ void eighth_contact()
         phonebook.Contacts[3].FirstName = str;
     else
     {
-        std::cout << "Error a character is incorrect :(" << std::endl;
+        std::cout << RED << "Error a character is incorrect :(" << RESET << std::endl;
         return ;
     }
     std::cout << "Please enter last name :" << std::endl;
@@ -54,7 +54,7 @@ void eighth_contact()
         phonebook.Contacts[3].LastName = str;
     else
     {
-        std::cout << "Error a character is incorrect :(" << std::endl;
+        std::cout << RED << "Error a character is incorrect :(" << RESET << std::endl;
         return ;
     }
     std::cout << "Please enter Nickname :" << std::endl;
@@ -63,7 +63,7 @@ void eighth_contact()
         phonebook.Contacts[3].Nickname = str;
     else
     {
-        std::cout << "Error a character is incorrect :(" << std::endl;
+        std::cout << RED << "Error a character is incorrect :(" << RESET << std::endl;
         return ;
     }
     std::cout << "Please enter your phone number :" << std::endl;
@@ -77,13 +77,13 @@ void eighth_contact()
     }
     std::cout << "Please tell me your darkest secret :" << std::endl;
     getline(std::cin, phonebook.Contacts[3].DarkestSecret);
-    phonebook.i = 3;
+    // phonebook.i = 3;
 }
 
 void add()
 {
     std::string str;
-    if (phonebook.i < 2)
+    if (phonebook.i <= 2)
     {
         std::cout << "Please enter first name :" << std::endl;
         getline(std::cin, str);
@@ -91,7 +91,7 @@ void add()
             phonebook.Contacts[phonebook.i].FirstName = str;
         else
         {
-            std::cout << "Error a character is incorrect :(" << std::endl;
+            std::cout << RED << "Error a character is incorrect :(" << RESET << std::endl;
             return ;
         }
         std::cout << "Please enter last name :" << std::endl;
@@ -100,7 +100,7 @@ void add()
             phonebook.Contacts[phonebook.i].LastName = str;
         else
         {
-            std::cout << "Error a character is incorrect :(" << std::endl;
+            std::cout << RED << "Error a character is incorrect :(" << RESET << std::endl;
             return ;
         }
         std::cout << "Please enter Nickname :" << std::endl;
@@ -109,7 +109,7 @@ void add()
             phonebook.Contacts[phonebook.i].Nickname = str;
         else
         {
-            std::cout << "Error a character is incorrect :(" << std::endl;
+            std::cout << RED << "Error a character is incorrect :(" << RESET << std::endl;
             return ;
         }
         std::cout << "Please enter your phone number :" << std::endl;
@@ -147,7 +147,7 @@ std::string truncate(const std::string& str)
     if (str.length() > 10)
         return str.substr(0, 10 - 1) + '.';
     else
-        return str; // Retourner la chaîne originale si elle est assez courte
+        return str;
 }
 
 void search()
@@ -156,7 +156,7 @@ void search()
 
     std::cout << std::right;
     std::cout << std::setw(11) << "index|" << std::setw(11) << "first name|" << std::setw(11) << "last name|" << std::setw(11) << "nickname|" << std::endl; 
-    for (int i = 0; i < phonebook.i; i++)
+    for (int i = 1; i <= phonebook.i; i++)
     {
         std::cout << YELLOW << std::setw(10) << i << "|" << RESET;
         std::cout << YELLOW << std::setw(10) <<  truncate(phonebook.Contacts[i].FirstName) << "|" << RESET;
@@ -170,7 +170,7 @@ void search()
         std::cout << "Please enter the index of the contact to display" << std::endl;
         getline(std::cin, to_display);
         if (index_to_display(to_display) == -1)
-            std::cout << "Error ! Please enter a valid index !" << std::endl;
+            std::cout << RED << "Error ! Please enter a valid index !" << RESET << std::endl;
         else
         {
             index = index_to_display(to_display);
@@ -178,11 +178,11 @@ void search()
         }        
 
     }
-    std::cout << "First name : " <<  phonebook.Contacts[index].FirstName << std::endl;
-    std::cout << "Last name : " <<  phonebook.Contacts[index].LastName << std::endl;
-    std::cout << "Nickname : " <<  phonebook.Contacts[index].Nickname << std::endl;
-    std::cout << "Phone number : " <<  phonebook.Contacts[index].PhoneNumber << std::endl;
-    std::cout << "Darkest secret : " <<  phonebook.Contacts[index].DarkestSecret << std::endl;
+    std::cout << YELLOW << "First name : " <<  phonebook.Contacts[index].FirstName << RESET << std::endl;
+    std::cout << YELLOW << "Last name : " <<  phonebook.Contacts[index].LastName << RESET << std::endl;
+    std::cout << YELLOW << "Nickname : " <<  phonebook.Contacts[index].Nickname << RESET << std::endl;
+    std::cout << YELLOW << "Phone number : " <<  phonebook.Contacts[index].PhoneNumber << RESET << std::endl;
+    std::cout << YELLOW << "Darkest secret : " <<  phonebook.Contacts[index].DarkestSecret << RESET << std::endl;
 }
 
 
@@ -192,7 +192,7 @@ int main(int argc, char **argv)
     (void)argv;
     while (1)
     {
-        std::cout << "Hello, please enter a command :" << std::endl;
+        std::cout << BLUE << "Hello, please enter a command :" << RESET << std::endl;
         std::string command;
         getline(std::cin, command);
         if (command == "ADD")
@@ -202,6 +202,6 @@ int main(int argc, char **argv)
         else if (command == "EXIT")
             exit (0);
         else
-            std::cout << "Error, command is not valid !" << std::endl;
+            std::cout << RED << "Error, command is not valid !" << RESET << std::endl;
     }
 }
