@@ -2,7 +2,7 @@
 NAME	= phonebook
 SRC		= PhoneBook.cpp \
 			Contact.cpp \
-			
+			main.cpp
 OBJ		= $(SRC:%.cpp=%.o)
 INCL	= PhoneBook.hpp \
 			Contact.hpp
@@ -26,4 +26,3 @@ fclean: clean
 re: fclean all
 
 .PHONY: all clean fclean re
-
