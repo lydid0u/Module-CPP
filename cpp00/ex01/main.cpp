@@ -23,12 +23,12 @@ int main()
 		std::cout << BLUE << "Hello, please enter a command :" << RESET << std::endl;
 		getline(std::cin, command);
         if (std::cin.eof())
-            exit (0);
+            return (1);
 		if (command == "ADD" || command == "add")
 			phonebook.add();
 		else if (command == "SEARCH" || command == "search")
 			phonebook.search();
-		else if (command == "EXIT")
+		else if (command == "EXIT" || command == "exit")
 			exit (0);
 		else
 			std::cout << RED << "Error, command is not valid !" << RESET << std::endl;

@@ -24,6 +24,7 @@
 #define RED	 "\033[31m"
 #define BLUE	"\033[34m" 
 #define YELLOW  "\033[33m"
+#define GREEN   "\033[32m" 
 
 class PhoneBook
 {
@@ -36,6 +37,7 @@ class PhoneBook
 	private:
 	Contact Contacts[8];
 	int i;
+	int eight;
 	void	EighthContact();
 	int	index_to_display(std::string to_display);
 	int	check_name(std::string str);
