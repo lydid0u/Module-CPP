@@ -6,14 +6,13 @@
 #    By: lboudjel <lboudjel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/17 18:04:10 by lboudjel          #+#    #+#              #
-#    Updated: 2024/10/17 18:09:47 by lboudjel         ###   ########.fr        #
+#    Updated: 2024/10/18 19:16:56 by lboudjel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= brainz
+NAME	= zombie
 SRC		= Zombie.cpp \
-			newZombie.cpp \
-			randomChump.cpp \
+			zombieHorde.cpp \
 			main.cpp
 OBJ		= $(SRC:%.cpp=%.o)
 INCL	= Zombie.hpp 

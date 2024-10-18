@@ -1,34 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.hpp                                         :+:      :+:    :+:   */
+/*   Zombie.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lboudjel <lboudjel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/17 18:10:52 by lboudjel          #+#    #+#             */
-/*   Updated: 2024/10/17 19:09:22 by lboudjel         ###   ########.fr       */
+/*   Created: 2024/10/17 18:18:09 by lboudjel          #+#    #+#             */
+/*   Updated: 2024/10/18 19:13:48 by lboudjel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ZOMBIE_HPP
-# define ZOMBIE_HPP
+#include "Zombie.hpp"
 
-#include <string>
-#include <iostream>
+Zombie::Zombie(){}
 
-class	Zombie {
-	private:
-	std::string name;
-	
-	public:
-	Zombie(void);
-	~Zombie(void);
-	void announce(void);
-	Zombie *newZombie(std::string name);
-	void randomChump(std::string name);
-	std::string GetName();
-	void	SetName(std::string);
+Zombie::~Zombie(){
+	std::cout << name << " has been destroyed." << std::endl;
+}
 
-};
+void	Zombie::setName(std::string name){
+	this->name = name;
+}
 
-#endif
+void	Zombie::announce(void){
+	std::cout << name << ": BraiiiiiiinnnzzzZ..." << std::endl;
+}
+
+//malloc = heap
+//stack c a la mano
+
+// newZOmbie sur la heap donc avec new 
+// randomChump sur la stack a la main
