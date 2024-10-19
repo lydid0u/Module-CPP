@@ -1,29 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanB.cpp                                         :+:      :+:    :+:   */
+/*   replace.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lboudjel <lboudjel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/19 17:36:11 by lboudjel          #+#    #+#             */
-/*   Updated: 2024/10/19 18:44:44 by lboudjel         ###   ########.fr       */
+/*   Created: 2024/10/19 18:49:07 by lboudjel          #+#    #+#             */
+/*   Updated: 2024/10/19 18:53:38 by lboudjel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/HumanB.hpp"
+#ifndef REPLACE_HPP
+# define REPLACE_HPP
 
-HumanB::HumanB(std::string name) : name(name), weapon(NULL){}
+#include <string>
+#include <iostream>
 
-HumanB::~HumanB(){}
-
-void	HumanB::setWeapon(Weapon& weapon){
-	this->weapon = &weapon; 
-}
-
-void HumanB::attack()
-{
-	if (weapon)
-		std::cout << name << " attacks with their " << weapon->getType() << std::endl;
-	else
-		std::cout << name << " has no weapon." << std::endl;
-}
+#endif
