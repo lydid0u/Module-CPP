@@ -6,7 +6,8 @@
 /*   By: lboudjel <lboudjel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 18:49:09 by lboudjel          #+#    #+#             */
-/*   Updated: 2024/10/19 18:49:09 by lboudjel         ###   ########.fr       */
+/*   Updated: 2024/10/22 18:26:51 by lboudjel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+//find et substr ou erase et insert

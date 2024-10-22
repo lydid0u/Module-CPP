@@ -6,7 +6,7 @@
 /*   By: lboudjel <lboudjel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 15:20:22 by lboudjel          #+#    #+#             */
-/*   Updated: 2024/10/21 19:47:17 by lboudjel         ###   ########.fr       */
+/*   Updated: 2024/10/22 15:17:18 by lboudjel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,29 +48,25 @@ int	msg_lvl(std::string level)
 
 void Harl::complain(std::string level)
 {
-	void (Harl::*ptr)() = NULL;
 	Harl	harl2;
 	int lvl = msg_lvl(level);
 
 	switch(lvl)
 	{
-		case 1: ptr = &Harl::debug;
+		case 1: harl2.debug();
+			std::cout << std::endl;
+		case 2: harl2.info();
+			std::cout << std::endl;
+		case 3: harl2.warning();
+			std::cout << std::endl;
+		case 4: harl2.error();
+			std::cout << std::endl;
 			break;
-		case 2: ptr = &Harl::info;
-			break;
-		case 3: ptr = &Harl::warning;
-			break;
-		case 4: ptr = &Harl::error;
-			break;
-		default : {
-			std::cout << "[ Probably complaining about insignificant problems ]" << std::endl; 
-		}
+		default : std::cout << "[ Probably complaining about insignificant problems ]" << std::endl; 
 			break;
 	}
 	if (lvl == 0)
 		exit(0);
-	(harl2.*ptr)();
-		std::cout << std::endl;
 	
 }
 
