@@ -6,7 +6,7 @@
 /*   By: lboudjel <lboudjel@student.42.fr>		  +#+  +:+	   +#+		*/
 /*												+#+#+#+#+#+   +#+		   */
 /*   Created: 2024/10/29 15:36:04 by lboudjel		  #+#	#+#			 */
-/*   Updated: 2024/10/29 15:40:11 by lboudjel		 ###   ########.fr	   */
+/*   Updated: 2024/10/29 17:05:09 by lboudjel		 ###   ########.fr	   */
 /*																			*/
 /* ************************************************************************** */
 
@@ -65,7 +65,31 @@ float Fixed::toFloat(void) const{
 	return (value);
 }
 
+//----------------- SURCHARGE DES OPERATEURS -----------------//
+
 std::ostream &operator<<(std::ostream &out, const Fixed &value){
 	out << value.toFloat();
 	return out;
+}
+
+Fixed	Fixed::operator+(const Fixed &value) const{
+	return Fixed((ValueFixedPoint + value.ValueFixedPoint) >> Bits);
+}
+
+Fixed	Fixed::operator-(const Fixed &value) const{
+	return Fixed((ValueFixedPoint - value.ValueFixedPoint) >> Bits);
+}
+
+Fixed	Fixed::operator*(Fixed const &value) const
+{
+	Fixed tmp;
+	tmp.setRawBits(ValueFixedPoint * value.ValueFixedPoint >> Bits);
+	return (tmp);
+}
+
+Fixed	Fixed::operator/(Fixed const &value) const
+{
+	Fixed tmp;
+	tmp.setRawBits(ValueFixedPoint / value.toFloat());
+	return (tmp);
 }

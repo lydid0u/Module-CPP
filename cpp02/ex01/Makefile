@@ -1,22 +1,34 @@
-NAME        = Fixed
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: lboudjel <lboudjel@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/10/29 17:08:15 by lboudjel          #+#    #+#              #
+#    Updated: 2024/10/29 17:08:15 by lboudjel         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+NAME		= Fixed
 
 SRCS_NAMES  = Fixed.cpp \
-              main.cpp
+			  main.cpp
 OBJS_NAMES  = $(SRCS_NAMES:.cpp=.o)
 
-DIR_INCL    = include
-DIR_SRCS    = srcs
-DIR_OBJS    = objs
+DIR_INCL	= include
+DIR_SRCS	= srcs
+DIR_OBJS	= objs
 
-SRCS        = $(addprefix $(DIR_SRCS)/,$(SRCS_NAMES))
-OBJS        = $(addprefix $(DIR_OBJS)/,$(OBJS_NAMES))
+SRCS		= $(addprefix $(DIR_SRCS)/,$(SRCS_NAMES))
+OBJS		= $(addprefix $(DIR_OBJS)/,$(OBJS_NAMES))
 
-CC          = c++
-CFLAGS      = -Wall -Wextra -Werror -std=c++98
-INC         = -I$(DIR_INCL)
-CDFLAGS     = -MMD -MP
+CC		  = c++
+CFLAGS	  = -Wall -Wextra -Werror -std=c++98
+INC		 = -I$(DIR_INCL)
+CDFLAGS	 = -MMD -MP
 
-DEPS        = $(OBJS:.o=.d)
+DEPS		= $(OBJS:.o=.d)
 
 all: $(NAME)
 

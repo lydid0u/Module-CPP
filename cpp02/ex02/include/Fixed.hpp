@@ -31,6 +31,11 @@ public:
 	Fixed &operator=(const Fixed &copy);
 	~Fixed();
 
+	Fixed	operator+(const Fixed &value) const;
+	Fixed	operator-(const Fixed &value) const;
+	Fixed	operator*(const Fixed &value) const;
+	Fixed	operator/(const Fixed &value) const;
+
 	int getRawBits() const;
 	void setRawBits(int const raw);
 	float toFloat() const;

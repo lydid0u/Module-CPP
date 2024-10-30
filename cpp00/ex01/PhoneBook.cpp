@@ -6,7 +6,7 @@
 /*   By: lboudjel <lboudjel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 17:57:14 by lboudjel          #+#    #+#             */
-/*   Updated: 2024/10/17 17:57:14 by lboudjel         ###   ########.fr       */
+/*   Updated: 2024/10/19 17:34:05 by lboudjel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,8 +112,7 @@ void PhoneBook::EighthContact()
 	getline(std::cin, str);
 	Contacts[7].SetDarkestSecret(str);
 	i = 7;
-	eight = 1;
-	
+	eight = 1;	
 }
 
 void PhoneBook::add()
