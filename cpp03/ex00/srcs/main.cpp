@@ -6,7 +6,7 @@
 /*   By: lboudjel <lboudjel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 20:36:10 by lboudjel          #+#    #+#             */
-/*   Updated: 2024/11/08 21:26:43 by lboudjel         ###   ########.fr       */
+/*   Updated: 2024/11/15 18:44:25 by lboudjel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,28 @@ int main()
 	ClapTrap Moha("MOHA");
 	ClapTrap Lydia("LYDIA");
 	
+	std::cout << std::endl;
+	
 	Moha.attack("LYDIA");
-	Moha._EnergyPoints 
+	Lydia.takeDamage(Moha.getAttackDamage());
+	Moha.setAttackDamage(2);
+	Moha.attack("LYDIA");
+	Lydia.takeDamage(Moha.getAttackDamage());
+	Lydia.beRepaired(1);
+	
+	Moha.setAttackDamage(4);
+	while (Moha.getEnergyPoints() != 0 && Lydia.getHitPoints() > 0)
+	{
+		Moha.attack("LYDIA");
+		Lydia.takeDamage(Moha.getAttackDamage());
+		Lydia.beRepaired(1);
+	}
+	
+	// Moha.setAttackDamage(1);
+	// while (Moha.getEnergyPoints() != 0 && Lydia.getHitPoints() > 0)
+	// {
+	// 	Moha.attack("LYDIA");
+	// 	Lydia.takeDamage(Moha.getAttackDamage());
+	// 	Lydia.beRepaired(2);
+	// }
 }
