@@ -6,7 +6,7 @@
 /*   By: lboudjel <lboudjel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 20:36:10 by lboudjel          #+#    #+#             */
-/*   Updated: 2024/11/15 18:44:25 by lboudjel         ###   ########.fr       */
+/*   Updated: 2024/11/26 18:13:27 by lboudjel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,17 @@
 
 int main()
 {
-	ScavTrap	scav("MOHASCAV");
-	// ClapTrap Moha("MOHA");
-	// ClapTrap Lydia("LYDIA");
+	ScavTrap	Scav("MOHASCAV");
+	ClapTrap Lydia("LYDIA");
 	
 	std::cout << std::endl;
 	
-	scav.attack("LYDIA");
-	// Lydia.beRepaired(1);
+	Scav.attack("LYDIA");
+	Lydia.takeDamage(Scav.getAttackDamage());
+	Lydia.beRepaired(1);
+	Lydia.attack("MOHASCAV");
+	
+	Scav.guardGate();
 }
 	
 	// Moha.setAttackDamage(1);

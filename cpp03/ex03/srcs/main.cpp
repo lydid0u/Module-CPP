@@ -6,39 +6,38 @@
 /*   By: lboudjel <lboudjel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 20:36:10 by lboudjel          #+#    #+#             */
-/*   Updated: 2024/11/26 21:50:10 by lboudjel         ###   ########.fr       */
+/*   Updated: 2024/11/26 22:24:54 by lboudjel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ClapTrap.hpp"
+#include "../include/DiamondTrap.hpp"
+
 
 int main()
 {
-	ClapTrap Moha("MOHA");
-	ClapTrap Lydia("LYDIA");
+	std::cout << BG_CYAN;
+	ClapTrap 	Lydia("Lydia");
+	std::cout << BG_MAGENTA;
+	FragTrap	Frag;
+	std::cout << BG_BLUE;
+	ScavTrap	Scav;
+	std::cout << BG_GREEN;
+	DiamondTrap	Diamond("SIRINE_DIAMOND");
+
 	
 	std::cout << std::endl;
+	Diamond.whoAmI();
+	std::cout << GREEN << "HitPoints : " << Diamond.getHitPoints() << RESET << std::endl;
+	std::cout << BLUE << "EnergyPoints : " << Diamond.getEnergyPoints() << RESET << std::endl;
+	std::cout << RED << "AttackDamage : " << Diamond.getAttackDamage() << RESET << std::endl;
+	std::cout << std::endl;
 	
-	Moha.attack("LYDIA");
-	Lydia.takeDamage(Moha.getAttackDamage());
-	Moha.setAttackDamage(2);
-	Moha.attack("LYDIA");
-	Lydia.takeDamage(Moha.getAttackDamage());
-	Lydia.beRepaired(1);
+	std::cout << "-----------------------------------------------\n";
 	
-	Moha.setAttackDamage(4);
-	while (Moha.getEnergyPoints() != 0 && Lydia.getHitPoints() > 0)
-	{
-		Moha.attack("LYDIA");
-		Lydia.takeDamage(Moha.getAttackDamage());
-		Lydia.beRepaired(1);
-	}
+	Lydia.attack("SIRINE_DIAMOND");
+	Diamond.takeDamage(Lydia.getAttackDamage());
+	Diamond.beRepaired(15);
+	Diamond.attack("MOHAFrag");
 	
-	// Moha.setAttackDamage(1);
-	// while (Moha.getEnergyPoints() != 0 && Lydia.getHitPoints() > 0)
-	// {
-	// 	Moha.attack("LYDIA");
-	// 	Lydia.takeDamage(Moha.getAttackDamage());
-	// 	Lydia.beRepaired(2);
-	// }
+	// Frag.highFivesGuys();
 }

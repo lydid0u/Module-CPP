@@ -1,11 +1,26 @@
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap(std::string name) : ClapTrap(name) {
-	std::cout << "ScavTrap " << name << " has been created.\n";
+ScavTrap::ScavTrap() : ClapTrap("Scav") {
+	std::cout << "ScavTrap " << _name << " has been created." << std::endl;
 }
 
 ScavTrap::~ScavTrap() {
 	std::cout << "ScavTrap " << _name << " destructor has been called.\n";
+}
+
+void	ScavTrap::setHitPoints(int amount)
+{
+	_HitPoints = amount;
+}
+
+void	ScavTrap::setEnergyPoints(int amount)
+{
+	_EnergyPoints = amount;
+}
+
+void	ScavTrap::setAttackDamage(int amount)
+{
+	_AttackDamage = amount;
 }
 
 void	ScavTrap::attack(const std::string& target)

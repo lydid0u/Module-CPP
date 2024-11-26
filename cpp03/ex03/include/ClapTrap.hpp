@@ -6,12 +6,12 @@
 /*   By: lboudjel <lboudjel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 20:36:53 by lboudjel          #+#    #+#             */
-/*   Updated: 2024/11/21 18:22:36 by lboudjel         ###   ########.fr       */
+/*   Updated: 2024/11/26 22:15:41 by lboudjel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ClapTrap_HPP
-# define ClapTrap_HPP
+#ifndef CLAPTRAP_HPP
+# define CLAPTRAP_HPP
 
 #include <ostream>
 #include <iostream>
@@ -21,18 +21,27 @@
 #define RED	 	"\033[31m"
 #define BLUE	"\033[34m" 
 #define YELLOW  "\033[33m"
-#define GREEN   "\033[32m" 
+#define GREEN   "\033[32m"
+#define MAGENTA "\033[35m"
+#define CYAN    "\033[36m"
+
+#define BG_RED      "\033[41m"
+#define BG_GREEN    "\033[42m"
+#define BG_YELLOW   "\033[43m"
+#define BG_BLUE     "\033[44m"
+#define BG_MAGENTA  "\033[45m"
+#define BG_CYAN     "\033[46m"
 
 class ClapTrap
 {
-	private:
+	protected:
 		std::string _name;
 		int _HitPoints;
 		int _EnergyPoints;
 		int _AttackDamage;
 		
 	public:
-		ClapTrap(std::string name);
+		ClapTrap(std::string _name);
 		~ClapTrap();
 		void attack(const std::string& target);
 		void takeDamage(unsigned int amount);

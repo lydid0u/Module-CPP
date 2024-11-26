@@ -6,33 +6,27 @@
 /*   By: lboudjel <lboudjel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 20:36:10 by lboudjel          #+#    #+#             */
-/*   Updated: 2024/11/26 21:50:10 by lboudjel         ###   ########.fr       */
+/*   Updated: 2024/11/26 18:28:12 by lboudjel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ClapTrap.hpp"
+#include "../include/FragTrap.hpp"
 
 int main()
 {
-	ClapTrap Moha("MOHA");
+	FragTrap	Frag("MOHAFRAG");
 	ClapTrap Lydia("LYDIA");
 	
 	std::cout << std::endl;
 	
-	Moha.attack("LYDIA");
-	Lydia.takeDamage(Moha.getAttackDamage());
-	Moha.setAttackDamage(2);
-	Moha.attack("LYDIA");
-	Lydia.takeDamage(Moha.getAttackDamage());
+	Frag.attack("LYDIA");
+	Lydia.takeDamage(Frag.getAttackDamage());
 	Lydia.beRepaired(1);
+	Lydia.attack("MOHAFrag");
 	
-	Moha.setAttackDamage(4);
-	while (Moha.getEnergyPoints() != 0 && Lydia.getHitPoints() > 0)
-	{
-		Moha.attack("LYDIA");
-		Lydia.takeDamage(Moha.getAttackDamage());
-		Lydia.beRepaired(1);
-	}
+	Frag.highFivesGuys();
+}
 	
 	// Moha.setAttackDamage(1);
 	// while (Moha.getEnergyPoints() != 0 && Lydia.getHitPoints() > 0)
@@ -41,4 +35,3 @@ int main()
 	// 	Lydia.takeDamage(Moha.getAttackDamage());
 	// 	Lydia.beRepaired(2);
 	// }
-}

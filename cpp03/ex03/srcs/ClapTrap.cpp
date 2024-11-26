@@ -6,18 +6,18 @@
 /*   By: lboudjel <lboudjel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 20:39:42 by lboudjel          #+#    #+#             */
-/*   Updated: 2024/11/26 18:21:44 by lboudjel         ###   ########.fr       */
+/*   Updated: 2024/11/26 22:27:09 by lboudjel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ClapTrap.hpp"
 
-ClapTrap::ClapTrap(std::string name) : _name(name), _HitPoints(10), _EnergyPoints(10), _AttackDamage(0) {
-	std::cout << "ClapTrap " << name << " has been created.\n";
+ClapTrap::ClapTrap(std::string name) : _name(name), _HitPoints(100), _EnergyPoints(50), _AttackDamage(30) {
+	std::cout << "ClapTrap " << _name << " has been created." << std::endl;
 }
 
 ClapTrap::~ClapTrap() {
-	std::cout << "Destructor has been called.\n";
+	std::cout << "ClapTrap " << _name << " destructor has been called.\n";
 }
 
 void		ClapTrap::setName(std::string name){
@@ -70,7 +70,7 @@ void 	ClapTrap::takeDamage(unsigned int amount)
 	this->_HitPoints -= amount;
 	if (this->_HitPoints < 0)
 		this->_HitPoints = 0;
-	std::cout << YELLOW << "ClapTrap " << this->_name << " took " << amount << " damage and has " << this->_HitPoints << " hit points left !" << RESET << std::endl << std::endl;
+	std::cout << YELLOW << "ClapTrap " << this->_name << " took " << amount << " damage and has " << getHitPoints()  << " hit points left !" << RESET << std::endl << std::endl;
 	if (this->_HitPoints <= 0)
 		std::cout << RED << this->_name << " has died :( RIP\n" << RESET << std::endl; 
 }
@@ -86,12 +86,9 @@ void 	ClapTrap::beRepaired(unsigned int amount)
 	if (this->_HitPoints > 0)
 	{
 		this->_HitPoints += amount;
-		if (this->_HitPoints > 10)
-			this->_HitPoints = 10;
 		std::cout << GREEN << "ClapTrap " << this->_name << " healed " << amount << " hit point(s) and has now " << this->_HitPoints << " hit points total !" << RESET << std::endl;
 	}
 	this->_EnergyPoints--;
 	if (this->_EnergyPoints >= 0)
 		std::cout << this->_name << " has " << this->_EnergyPoints << " energy points left\n" << std::endl;
 }
-

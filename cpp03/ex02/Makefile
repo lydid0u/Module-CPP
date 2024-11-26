@@ -6,14 +6,16 @@
 #    By: lboudjel <lboudjel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/29 17:08:11 by lboudjel          #+#    #+#              #
-#    Updated: 2024/11/21 18:22:34 by lboudjel         ###   ########.fr        #
+#    Updated: 2024/11/26 18:24:28 by lboudjel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		= ClapTrap
+NAME		= FragTrap
 
-SRCS_NAMES  = ClapTrap.cpp \
-			  main.cpp
+SRCS_NAMES  =	ClapTrap.cpp \
+				FragTrap.cpp \
+			  	main.cpp
+
 OBJS_NAMES  = $(SRCS_NAMES:.cpp=.o)
 
 DIR_INCL	= include

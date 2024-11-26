@@ -6,18 +6,18 @@
 /*   By: lboudjel <lboudjel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 20:39:42 by lboudjel          #+#    #+#             */
-/*   Updated: 2024/11/15 18:45:28 by lboudjel         ###   ########.fr       */
+/*   Updated: 2024/11/26 22:28:46 by lboudjel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ClapTrap.hpp"
 
-ClapTrap::ClapTrap(std::string name) : _name(name), _HitPoints(100), _EnergyPoints(50), _AttackDamage(20) {
-	std::cout << "ClapTrap " << name << " has been created.\n";
+ClapTrap::ClapTrap(std::string _name) : _name(_name), _HitPoints(100), _EnergyPoints(50), _AttackDamage(20) {
+	std::cout << "ClapTrap " << _name << " has been created.\n";
 }
 
 ClapTrap::~ClapTrap() {
-	std::cout << "ClapTrap destructor has been called.\n";
+	std::cout << "ClapTrap " << _name << " destructor has been called.\n";
 }
 
 void		ClapTrap::setName(std::string name){
@@ -83,14 +83,14 @@ void 	ClapTrap::beRepaired(unsigned int amount)
 		std::cout << RED << "ClapTrap " << this->_name << " does not have enough energy to heal !\n" << RESET << std::endl;
 		return ;
 	}
-	if (this->_HitPoints <= 9 && this->_HitPoints > 0)
+	if (this->_HitPoints > 0)
 	{
 		this->_HitPoints += amount;
-		if (this->_HitPoints > 10)
-			this->_HitPoints = 10;
+		if (this->_HitPoints > 100)
+			this->_HitPoints = 100;
 		std::cout << GREEN << "ClapTrap " << this->_name << " healed " << amount << " hit point(s) and has now " << this->_HitPoints << " hit points total !" << RESET << std::endl;
 	}
 	this->_EnergyPoints--;
-	if (this->_HitPoints <= 0)
+	if (this->_EnergyPoints >= 0)
 		std::cout << this->_name << " has " << this->_EnergyPoints << " energy points left\n" << std::endl;
 }
