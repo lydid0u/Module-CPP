@@ -1,54 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lboudjel <lboudjel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/26 22:48:59 by lboudjel          #+#    #+#             */
-/*   Updated: 2024/11/29 19:27:22 by lboudjel         ###   ########.fr       */
+/*   Created: 2024/11/29 21:28:48 by lboudjel          #+#    #+#             */
+/*   Updated: 2024/11/29 21:55:57 by lboudjel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
-
-Animal::Animal() : _type("Animal")
-{
-	std::cout << "Default Animal constructor has been created.\n";
-}
-
-Animal::~Animal()
-{
-	std::cout << "Animal has been destroyed.\n";
-}
-
+// Cat.cpp
+#include "Cat.hpp"
 
 Cat::Cat() : _type("Cat")
 {
+	cerveau = new Brain();
 	std::cout << "Default Cat constructor has been created.\n";
 }
 
-Cat::~Cat()
-{
-	std::cout << "Cat has been destroyed.\n";
-}
+// Cat::Cat(const Cat& other) {
+// 	std::cout << "Copy constructor called" << std::endl;
+// 	// Add copy logic here, e.g., memberVariable = other.memberVariable;
+// }
 
-std::string Animal::getType() const
-{
-	return (_type);
+// Cat& Cat::operator=(const Cat& other) {
+// 	std::cout << "Copy assignment operator called" << std::endl;
+// 	if (this != &other) {
+// 		// Add assignment logic here, e.g., memberVariable = other.memberVariable;
+// 	}
+// 	return *this;
+// }
+
+Cat::~Cat() {
+	delete cerveau;
+	std::cout << "Cat destructor called" << std::endl;
 }
 
 std::string Cat::getType() const
 {
 	return (_type);
 }
-
-
-void	Animal::makeSound() const
-{
-	std::cout << BLUE << "Cette fonction fait le bruit d'un animal\n" << RESET;
-}
-
 
 void	Cat::makeSound() const
 {

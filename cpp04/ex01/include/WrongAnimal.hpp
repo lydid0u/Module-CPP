@@ -1,17 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   WrongAnima.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lboudjel <lboudjel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/26 22:40:00 by lboudjel          #+#    #+#             */
-/*   Updated: 2024/11/29 19:21:07 by lboudjel         ###   ########.fr       */
+/*   Created: 2024/11/29 18:17:40 by lboudjel          #+#    #+#             */
+/*   Updated: 2024/11/29 18:17:41 by lboudjel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_HPP
-# define ANIMAL_HPP
+
+#ifndef WRONGANIMAL_HPP
+# define WRONGANIMAL_HPP
 
 #include <ostream>
 #include <iostream>
@@ -25,69 +26,58 @@
 #define MAGENTA "\033[35m"
 #define CYAN    "\033[36m"
 
-// alo.hpp
-#ifndef alo_HPP
-#define alo_HPP
+// ClassName.hpp
+#ifndef ClassName_HPP
+#define ClassName_HPP
 
 #include <iostream>
 
-class alo {
+class ClassName {
 public:
-	alo();
-	alo(const alo& other);
-	alo& operator=(const alo& other);
-	~alo();
+	ClassName();
+	ClassName(const ClassName& other);
+	ClassName& operator=(const ClassName& other);
+	~ClassName();
 
 private:
 	// Add member variables here
 };
 
-#endif // alo_HPP
-
-class	Animal {
+#endif // ClassName_HPP
+class	WrongAnimal {
 	protected :
 		std::string _type;
 	public :
-		Animal();
-		virtual ~Animal();
-		virtual std::string getType() const;
-		virtual void makeSound() const;
+		WrongAnimal();
+		virtual ~WrongAnimal();
+		std::string getType() const;
+		void makeSound() const;
 };
 
-class Dog : virtual public Animal {
+class WrongCat : public WrongAnimal {
 	protected :
 		std::string _type;
 	public :
-		Dog();
-		~Dog();
-		virtual std::string getType() const;
-		virtual void makeSound() const;
+		WrongCat();
+		~WrongCat();
+		std::string getType() const;
+		void makeSound() const;
 };
 
-class Cat : virtual public Animal {
-	protected :
-		std::string _type;
-	public :
-		Cat();
-		~Cat();
-		virtual std::string getType() const;
-		virtual void makeSound() const;
-};
-
-// class Cat : public Animal {
+// class Cat : public WrongAnimal {
 // 	public :
 // 		void makesound();
 // };
 
-// class animal {
+// class Wronganimal {
 // public:
-// 	animal();
+// 	Wronganimal();
 
-// 	animal(const animal& other);
+// 	Wronganimal(const Wronganimal& other);
 
-// 	animal& operator=(const animal& other);
+// 	Wronganimal& operator=(const Wronganimal& other);
 
-// 	~animal();
+// 	~Wronganimal();
 
 // private:
 // 	// Add member variables here

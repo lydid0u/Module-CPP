@@ -6,16 +6,18 @@
 #    By: lboudjel <lboudjel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/29 17:08:11 by lboudjel          #+#    #+#              #
-#    Updated: 2024/11/29 19:36:09 by lboudjel         ###   ########.fr        #
+#    Updated: 2024/11/29 21:49:30 by lboudjel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		= Animal
+NAME		= Brain
 
-SRCS_NAMES  = Animal.cpp \
-				WrongAnimal.cpp \
-				Dog.cpp \
-			  main.cpp
+SRCS_NAMES  = 	Animal.cpp \
+			  	WrongAnimal.cpp \
+			   	Dog.cpp \
+			   	Cat.cpp \
+				Brain.cpp \
+			  	main.cpp
 OBJS_NAMES  = $(SRCS_NAMES:.cpp=.o)
 
 DIR_INCL	= include
