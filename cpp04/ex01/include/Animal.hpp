@@ -6,10 +6,11 @@
 /*   By: lboudjel <lboudjel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 22:40:00 by lboudjel          #+#    #+#             */
-/*   Updated: 2024/11/30 01:39:14 by lboudjel         ###   ########.fr       */
+/*   Updated: 2024/12/05 22:48:11 by lboudjel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#pragma once
 #ifndef ANIMAL_HPP
 # define ANIMAL_HPP
 
@@ -18,7 +19,6 @@
 #include <string>
 
 #include "Brain.hpp"
-
 
 #define RESET   "\033[0m"
 

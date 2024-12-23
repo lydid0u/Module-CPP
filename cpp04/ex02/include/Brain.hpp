@@ -1,30 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.hpp                                            :+:      :+:    :+:   */
+/*   Brain.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lboudjel <lboudjel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/29 19:11:48 by lboudjel          #+#    #+#             */
-/*   Updated: 2024/12/05 23:07:18 by lboudjel         ###   ########.fr       */
+/*   Created: 2024/11/29 19:30:26 by lboudjel          #+#    #+#             */
+/*   Updated: 2024/11/30 01:21:16 by lboudjel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DOG_HPP
-# define DOG_HPP
+// Brain.hpp
+#ifndef BRAIN_HPP
+# define BRAIN_HPP
 
-#include "Animal.hpp"
+#include <iostream>
 
-class Dog : virtual public Animal {
-	protected :
-		std::string _type;
-	public :
-		Dog();
-		Dog(const Dog &other);
-		Dog &operator=(const Dog &other);
-		~Dog();
-		virtual std::string getType() const;
-		virtual void makeSound() const;
+class Brain {
+	private:
+		std::string ideas[100];
+	public:
+		Brain();
+		Brain(const Brain& other);
+		Brain& operator=(const Brain& other);
+		~Brain();
+		void		setIdea(int n, std::string idea);
+		std::string	getIdea(int n);
 };
 
-#endif // Dog_HPP
+
+#endif

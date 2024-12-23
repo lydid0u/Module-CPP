@@ -6,7 +6,7 @@
 /*   By: lboudjel <lboudjel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 22:50:22 by lboudjel          #+#    #+#             */
-/*   Updated: 2024/11/30 01:55:51 by lboudjel         ###   ########.fr       */
+/*   Updated: 2024/12/23 16:14:54 by lboudjel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,16 +38,16 @@ int main()
 	std::cout << BOLD RED << "\nDelete le tableau : \n" << RESET;
 	for (int i = 0; i < 6; i++)
 		delete Dog_Cat[i];
-
+	
 	std::cout << BOLD RED << "\nChecker la deep copy : \n" << RESET;
 	Dog chien;
-	chien.cerveau->setIdea(3, "Je suis un chien.");
-	std::cout << YELLOW << chien.cerveau->getIdea(3) << RESET << std::endl;
+	chien.setBrainIdea(3, "Je suis un chien.");
+	std::cout << YELLOW << chien.getBrainIdea(3) << RESET << std::endl;
 	Dog shee_un = chien;
-	std::cout << MAGENTA << shee_un.cerveau->getIdea(3) << RESET << std::endl;
-	shee_un.cerveau->setIdea(3, "Je suis un shee_un !");
-	std::cout << "shee_uns new idea : " << shee_un.cerveau->getIdea(3) << std::endl;
-	std::cout << "chien's idea : "<< chien.cerveau->getIdea(3) << std::endl;
+	shee_un.setBrainIdea(3, "Je suis un shee_un !");
+	std::cout << MAGENTA << shee_un.getBrainIdea(3) << RESET << std::endl;
+	std::cout << "shee_uns new idea : " << shee_un.getBrainIdea(3) << std::endl;
+	std::cout << "chien's idea : "<< chien.getBrainIdea(3) << std::endl;
 
 	std::cout << std::endl;
 	

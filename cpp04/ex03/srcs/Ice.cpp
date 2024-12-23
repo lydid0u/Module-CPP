@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.hpp                                            :+:      :+:    :+:   */
+/*   Ice.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lboudjel <lboudjel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/29 19:11:48 by lboudjel          #+#    #+#             */
-/*   Updated: 2024/12/05 23:07:18 by lboudjel         ###   ########.fr       */
+/*   Created: 2024/12/23 19:44:03 by lboudjel          #+#    #+#             */
+/*   Updated: 2024/12/23 19:44:08 by lboudjel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DOG_HPP
-# define DOG_HPP
+#include "Ice.hpp"
 
-#include "Animal.hpp"
+Ice::Ice() : AMateria("ice") {}
 
-class Dog : virtual public Animal {
-	protected :
-		std::string _type;
-	public :
-		Dog();
-		Dog(const Dog &other);
-		Dog &operator=(const Dog &other);
-		~Dog();
-		virtual std::string getType() const;
-		virtual void makeSound() const;
-};
+Ice::Ice(const Ice& other) : AMateria(other) {}
 
-#endif // Dog_HPP
+Ice::~Ice() {}
+
+AMateria* Ice::clone() const {
+    return new Ice(*this);
+}
+
+void Ice::use(ICharacter& target) {
+    std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
+}

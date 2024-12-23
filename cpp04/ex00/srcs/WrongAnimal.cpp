@@ -6,7 +6,7 @@
 /*   By: lboudjel <lboudjel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 18:16:19 by lboudjel          #+#    #+#             */
-/*   Updated: 2024/11/29 19:16:15 by lboudjel         ###   ########.fr       */
+/*   Updated: 2024/12/05 23:40:06 by lboudjel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,22 @@ WrongAnimal::WrongAnimal() : _type("WrongAnimal")
 	std::cout << "Default WrongAnimal constructor has been created.\n";
 }
 
+WrongAnimal::WrongAnimal(const WrongAnimal &other) {
+    *this = other;
+    std::cout << "WrongAnimal has been copied." << std::endl;
+}
+
+WrongAnimal &WrongAnimal::operator=(const WrongAnimal &other) {
+    if (this != &other) {
+        _type = other._type;
+    }
+    std::cout << "WrongAnimal has been assigned." << std::endl;
+    return (*this);
+}
+
 WrongAnimal::~WrongAnimal()
 {
 	std::cout << "WrongAnimal has been destroyed.\n";
-}
-
-WrongCat::WrongCat() : _type("WrongCat")
-{
-	std::cout << "Default WrongCat constructor has been created.\n";
-}
-
-WrongCat::~WrongCat()
-{
-	std::cout << "WrongCat has been destroyed.\n";
 }
 
 std::string WrongAnimal::getType() const
@@ -37,17 +40,8 @@ std::string WrongAnimal::getType() const
 	return (_type);
 }
 
-std::string WrongCat::getType() const
-{
-	return (_type);
-}
-
 void	WrongAnimal::makeSound() const
 {
-	std::cout << BLUE << "Cette fonction fait le bruit d'un wrong animal\n" << RESET;
+	std::cout << BLUE << "lamina nu'd tiurb el tiaf noitcnof etteC\n" << RESET;
 }
 
-void	WrongCat::makeSound() const
-{
-	std::cout << GREEN << "wrong meow.\n" << RESET;
-}

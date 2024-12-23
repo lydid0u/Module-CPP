@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.hpp                                            :+:      :+:    :+:   */
+/*   Cure.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lboudjel <lboudjel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/29 19:11:48 by lboudjel          #+#    #+#             */
-/*   Updated: 2024/12/05 23:07:18 by lboudjel         ###   ########.fr       */
+/*   Created: 2024/12/23 19:44:26 by lboudjel          #+#    #+#             */
+/*   Updated: 2024/12/23 20:21:26 by lboudjel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DOG_HPP
-# define DOG_HPP
+#include "Cure.hpp"
 
-#include "Animal.hpp"
+Cure::Cure() : AMateria("cure") {}
 
-class Dog : virtual public Animal {
-	protected :
-		std::string _type;
-	public :
-		Dog();
-		Dog(const Dog &other);
-		Dog &operator=(const Dog &other);
-		~Dog();
-		virtual std::string getType() const;
-		virtual void makeSound() const;
-};
+Cure::Cure(const Cure& other) : AMateria(other) {}
 
-#endif // Dog_HPP
+Cure::~Cure() {}
+
+AMateria* Cure::clone() const {
+    return new Cure(*this);
+}
+
+void Cure::use(ICharacter& target) {
+    std::cout << "* heals " << target.getName() << "'s wounds *" << std::endl;
+}

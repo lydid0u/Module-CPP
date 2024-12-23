@@ -6,11 +6,11 @@
 #    By: lboudjel <lboudjel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/29 17:08:11 by lboudjel          #+#    #+#              #
-#    Updated: 2024/12/23 15:52:33 by lboudjel         ###   ########.fr        #
+#    Updated: 2024/12/23 18:32:29 by lboudjel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		= Brain
+NAME		= Animal
 
 SRCS_NAMES  = 	Animal.cpp \
 			   	Dog.cpp \

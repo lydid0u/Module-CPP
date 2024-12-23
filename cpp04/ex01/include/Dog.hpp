@@ -6,7 +6,7 @@
 /*   By: lboudjel <lboudjel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 21:32:14 by lboudjel          #+#    #+#             */
-/*   Updated: 2024/11/29 21:49:07 by lboudjel         ###   ########.fr       */
+/*   Updated: 2024/12/23 15:59:49 by lboudjel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,10 @@ class Dog : virtual public Animal
 		
 		virtual std::string getType() const;
 		virtual void makeSound() const;
+		void setBrainIdea(int n, std::string idea); // Nouvelle méthode
+		std::string getBrainIdea(int n) const; 
+	private:
 		Brain *cerveau;
-	protected:
 		std::string _type;
 };
 

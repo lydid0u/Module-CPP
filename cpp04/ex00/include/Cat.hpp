@@ -1,40 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lboudjel <lboudjel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/26 22:40:00 by lboudjel          #+#    #+#             */
-/*   Updated: 2024/12/05 23:21:22 by lboudjel         ###   ########.fr       */
+/*   Created: 2024/12/05 19:00:27 by lboudjel          #+#    #+#             */
+/*   Updated: 2024/12/05 23:07:33 by lboudjel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_HPP
-# define ANIMAL_HPP
+#ifndef CAT_HPP
+# define CAT_HPP
 
-#include <ostream>
-#include <iostream>
-#include <string>
+#include "Animal.hpp"
 
-#define RESET   "\033[0m"
-#define RED	 	"\033[31m"
-#define BLUE	"\033[34m" 
-#define YELLOW  "\033[33m"
-#define GREEN   "\033[32m"
-#define MAGENTA "\033[35m"
-#define CYAN    "\033[36m"
-
-class	Animal {
+class Cat : virtual public Animal {
 	protected :
 		std::string _type;
 	public :
-		Animal();
-		Animal(const Animal &other);
-		Animal &operator=(const Animal &other);
-		virtual ~Animal();
+		Cat();
+		Cat(const Cat &other);
+		Cat &operator=(const Cat &other);
+		~Cat();
 		virtual std::string getType() const;
 		virtual void makeSound() const;
 };
 
-#endif
+#endif // Cat_HPP

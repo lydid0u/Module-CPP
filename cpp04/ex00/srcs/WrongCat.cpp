@@ -1,30 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   WrongAnimal.cpp                                    :+:      :+:    :+:   */
+/*   WrongCat.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lboudjel <lboudjel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/29 18:16:19 by lboudjel          #+#    #+#             */
-/*   Updated: 2024/11/29 19:16:15 by lboudjel         ###   ########.fr       */
+/*   Created: 2024/12/05 23:10:39 by lboudjel          #+#    #+#             */
+/*   Updated: 2024/12/05 23:31:06 by lboudjel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "WrongAnimal.hpp"
-
-WrongAnimal::WrongAnimal() : _type("WrongAnimal")
-{
-	std::cout << "Default WrongAnimal constructor has been created.\n";
-}
-
-WrongAnimal::~WrongAnimal()
-{
-	std::cout << "WrongAnimal has been destroyed.\n";
-}
+#include "WrongCat.hpp"
 
 WrongCat::WrongCat() : _type("WrongCat")
 {
 	std::cout << "Default WrongCat constructor has been created.\n";
+}
+
+WrongCat::WrongCat(const WrongCat &other) : WrongAnimal(other) {
+    _type = other._type;
+    std::cout << "WrongCat has been copied." << std::endl;
+}
+
+WrongCat &WrongCat::operator=(const WrongCat &other) {
+    if (this != &other) { 
+        WrongAnimal::operator=(other); 
+        _type = other._type;
+    }
+    std::cout << "WrongCat has been assigned." << std::endl;
+    return (*this);
 }
 
 WrongCat::~WrongCat()
@@ -32,22 +36,12 @@ WrongCat::~WrongCat()
 	std::cout << "WrongCat has been destroyed.\n";
 }
 
-std::string WrongAnimal::getType() const
-{
-	return (_type);
-}
-
 std::string WrongCat::getType() const
 {
 	return (_type);
 }
 
-void	WrongAnimal::makeSound() const
-{
-	std::cout << BLUE << "Cette fonction fait le bruit d'un wrong animal\n" << RESET;
-}
-
 void	WrongCat::makeSound() const
 {
-	std::cout << GREEN << "wrong meow.\n" << RESET;
+ 	std::cout << GREEN << "wwooemm.\n" << RESET;
 }
