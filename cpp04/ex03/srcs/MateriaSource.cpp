@@ -5,74 +5,54 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lboudjel <lboudjel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/23 20:28:47 by lboudjel          #+#    #+#             */
-/*   Updated: 2024/12/23 20:28:50 by lboudjel         ###   ########.fr       */
+/*   Created: 2025/01/18 16:46:32 by lboudjel          #+#    #+#             */
+/*   Updated: 2025/01/18 16:46:32 by lboudjel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "MateriaSource.hpp"
 
-void MateriaSource::clearTemplates() {
-    for (int i = 0; i < 4; i++) {
-        delete _templates[i];
-        _templates[i] = nullptr;
-    }
-}
-
 MateriaSource::MateriaSource() {
-    for (int i = 0; i < 4; i++) {
-        _templates[i] = nullptr;
-    }
+    for (int i = 0; i < 4; i++)
+        this->templates[i] = NULL;
 }
 
-MateriaSource::MateriaSource(const MateriaSource& other) {
-    for (int i = 0; i < 4; i++) {
-        if (other._templates[i]) {
-            _templates[i] = other._templates[i]->clone();
-        }
-        else {
-            _templates[i] = nullptr;
-        }
-    }
+MateriaSource::~MateriaSource() {
+    for (int i = 0; i < 4; i++)
+        if (this->templates[i])
+            delete this->templates[i];
 }
 
-MateriaSource& MateriaSource::operator=(const MateriaSource& other) {
-    if (this != &other) {
-        clearTemplates();
+MateriaSource::MateriaSource(MateriaSource const & src) {
+    for (int i = 0; i < 4; i++)
+        this->templates[i] = src.templates[i] ? src.templates[i]->clone() : NULL;
+}
+
+MateriaSource & MateriaSource::operator=(MateriaSource const & rhs) {
+    if (this != &rhs) {
         for (int i = 0; i < 4; i++) {
-            if (other._templates[i]) {
-                _templates[i] = other._templates[i]->clone();
-            }
-            else {
-                _templates[i] = nullptr;
-            }
+            if (this->templates[i])
+                delete this->templates[i];
+            this->templates[i] = rhs.templates[i] ? rhs.templates[i]->clone() : NULL;
         }
     }
     return *this;
 }
 
-MateriaSource::~MateriaSource() {
-    clearTemplates();
-}
-
 void MateriaSource::learnMateria(AMateria* m) {
-    if (!m) {
+    if (!m)
         return;
-    }
-    
     for (int i = 0; i < 4; i++) {
-        if (_templates[i] == nullptr) {
-            _templates[i] = m->clone();
+        if (!this->templates[i]) {
+            this->templates[i] = m;
             return;
         }
     }
 }
 
 AMateria* MateriaSource::createMateria(std::string const & type) {
-    for (int i = 0; i < 4; i++) {
-        if (_templates[i] && _templates[i]->getType() == type) {
-            return _templates[i]->clone();
-        }
-    }
-    return nullptr;
+    for (int i = 0; i < 4; i++)
+        if (this->templates[i] && this->templates[i]->getType() == type)
+            return this->templates[i]->clone();
+    return NULL;
 }

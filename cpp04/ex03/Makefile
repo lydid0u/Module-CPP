@@ -1,27 +1,27 @@
-NAME		= AMateria
+NAME = AMateria
 
-SRCS_NAMES  = 	AMateria.cpp \
-			  	Cure.cpp \
-			  	Ice.cpp \
-			  	Character.cpp \
-			  	ICharacter.cpp \
-			  	MateriaSource.cpp \
-			  	main.cpp
-OBJS_NAMES  = $(SRCS_NAMES:.cpp=.o)
+SRCS_NAMES = AMateria.cpp \
+	Cure.cpp \
+	Ice.cpp \
+	Character.cpp \
+	MateriaSource.cpp \
+	main.cpp
 
-DIR_INCL	= include
-DIR_SRCS	= srcs
-DIR_OBJS	= objs
+OBJS_NAMES = $(SRCS_NAMES:.cpp=.o)
 
-SRCS		= $(addprefix $(DIR_SRCS)/,$(SRCS_NAMES))
-OBJS		= $(addprefix $(DIR_OBJS)/,$(OBJS_NAMES))
+DIR_INCL = include
+DIR_SRCS = srcs
+DIR_OBJS = objs
 
-CC		  = c++
-CFLAGS	  = -Wall -Wextra -Werror -std=c++98
-INC		 = -I$(DIR_INCL)
-CDFLAGS	 = -MMD -MP
+SRCS = $(addprefix $(DIR_SRCS)/,$(SRCS_NAMES))
+OBJS = $(addprefix $(DIR_OBJS)/,$(OBJS_NAMES))
 
-DEPS		= $(OBJS:.o=.d)
+CC = c++
+CFLAGS = -Wall -Wextra -Werror -std=c++98
+INC = -I$(DIR_INCL)
+CDFLAGS = -MMD -MP
+
+DEPS = $(OBJS:.o=.d)
 
 all: $(NAME)
 

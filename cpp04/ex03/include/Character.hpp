@@ -5,36 +5,31 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lboudjel <lboudjel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/23 19:22:42 by lboudjel          #+#    #+#             */
-/*   Updated: 2024/12/23 20:21:42 by lboudjel         ###   ########.fr       */
+/*   Created: 2025/01/18 17:08:16 by lboudjel          #+#    #+#             */
+/*   Updated: 2025/01/18 21:56:12 by lboudjel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
 #ifndef CHARACTER_HPP
 #define CHARACTER_HPP
 
-#include <iostream>
-#include <string>
 #include "ICharacter.hpp"
-#include "AMateria.hpp"
 
 class Character : public ICharacter {
 private:
-    std::string _name;
-    AMateria* _inventory[4];
-    void clearInventory();
+    std::string name;
+    AMateria* inventory[4];
 
 public:
-    Character(std::string name);
-    Character(const Character& other);
-    Character& operator=(const Character& other);
-    ~Character();
+    Character(std::string const & name);
+    Character(Character const & src);
+    Character & operator=(Character const & rhs);
+    virtual ~Character();
 
-    std::string const & getName() const;
-    void equip(AMateria* m);
-    void unequip(int idx);
-    void use(int idx, ICharacter& target);
+    virtual std::string const & getName() const;
+    virtual void equip(AMateria* m);
+    virtual void unequip(int idx);
+    virtual void use(int idx, ICharacter& target);
 };
 
 #endif

@@ -5,18 +5,24 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lboudjel <lboudjel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/23 19:44:03 by lboudjel          #+#    #+#             */
-/*   Updated: 2024/12/23 19:44:08 by lboudjel         ###   ########.fr       */
+/*   Created: 2025/01/18 16:54:11 by lboudjel          #+#    #+#             */
+/*   Updated: 2025/01/18 21:57:11 by lboudjel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Ice.hpp"
+#include <iostream>
 
 Ice::Ice() : AMateria("ice") {}
 
-Ice::Ice(const Ice& other) : AMateria(other) {}
-
 Ice::~Ice() {}
+
+Ice::Ice(Ice const & src) : AMateria(src) {}
+
+Ice & Ice::operator=(Ice const & rhs) {
+    AMateria::operator=(rhs);
+    return *this;
+}
 
 AMateria* Ice::clone() const {
     return new Ice(*this);

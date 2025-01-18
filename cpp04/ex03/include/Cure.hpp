@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lboudjel <lboudjel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/23 19:43:47 by lboudjel          #+#    #+#             */
-/*   Updated: 2024/12/23 20:21:16 by lboudjel         ###   ########.fr       */
+/*   Created: 2025/01/18 17:07:53 by lboudjel          #+#    #+#             */
+/*   Updated: 2025/01/18 20:28:43 by lboudjel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,12 @@
 class Cure : public AMateria {
 public:
     Cure();
-    Cure(const Cure& other);
-    ~Cure();
-    
-    AMateria* clone() const;
-    void use(ICharacter& target);
+    Cure(Cure const & src);
+    Cure & operator=(Cure const & rhs);
+    virtual ~Cure();
+
+    virtual AMateria* clone() const;
+    virtual void use(ICharacter& target);
 };
 
 #endif
