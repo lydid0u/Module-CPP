@@ -17,21 +17,29 @@
 #include <iostream>
 #include <exception> 
 
+#define RESET   "\033[0m"
+#define RED	 "\033[31m"
+#define BLUE	"\033[34m" 
+#define YELLOW  "\033[33m"
+#define GREEN   "\033[32m" 
+
 class Bureaucrat {
 public:
 	Bureaucrat();
-	Bureaucrat(const Bureaucrat& other);
-	Bureaucrat& operator=(const Bureaucrat& other);
-	// ~Bureaucrat();
+    Bureaucrat(std::string name, int grade);
+    Bureaucrat(const Bureaucrat &other);
+    Bureaucrat &operator=(const Bureaucrat &rhs);
+	~Bureaucrat();
 
-	void		setName(std::string);
-	std::string getName();
+	std::string getName() const ;
 	void		setGrade(int grade);
-	int 		getGrade();
+	int 		getGrade() const ;
 
-	int			checkGrade();
+	void			increment();
+	void			decrement();
+
 private:
-	std::string _name;
+	const std::string _name;
 	int	_grade;
 };
 
@@ -64,6 +72,6 @@ private:
     std::string _errorMessage;
 };
 
-// std::ostream	&operator<<(std::ostream &out, const Fixed &value);
+std::ostream	&operator<<(std::ostream &out, const Bureaucrat &bureaucrat_instance);
 
 #endif // Bureaucrat_HPP
