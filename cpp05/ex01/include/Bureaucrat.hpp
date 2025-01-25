@@ -23,6 +23,8 @@
 #define YELLOW  "\033[33m"
 #define GREEN   "\033[32m" 
 
+class Form;
+
 class Bureaucrat {
 public:
 	Bureaucrat();
@@ -37,6 +39,9 @@ public:
 
 	void			increment();
 	void			decrement();
+
+    void        signForm(Form &instance_form);
+
 
 private:
 	const std::string _name;

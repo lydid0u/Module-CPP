@@ -12,8 +12,13 @@
 
 #include "Form.hpp"
 
-int main() 
+int main ( void )
 {
+//
+}
+
+/* int main()
+{ 
 	std::cout << BLUE;
 
 	Bureaucrat Bureau("Lydia", 15);
@@ -97,4 +102,4 @@ int main()
 	std::cout << RESET;
 
     return 0;
-}
+} */

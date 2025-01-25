@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 Bureaucrat::Bureaucrat() : _name("Default"), _grade(1)
 {
@@ -79,6 +80,13 @@ void	Bureaucrat::increment()
 		catch (const GradeTooHighException &e) {
 		std::cerr << "Erreur : " << e.what() << std::endl;
 	}
+}
+
+void    Bureaucrat::signForm(Form &instance_form) {
+    if (instance_form.getIsSigned() == false)
+        std::cout << getName() << " couldn't sign " << instance_form.getName() << 
+			" because the form is already signed." << std::endl;
+    std::cout << getName() << " signed " << instance_form.getName();
 }
 
 std::ostream &operator<<(std::ostream &out, const Bureaucrat &bureaucrat_instance) {

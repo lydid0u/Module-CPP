@@ -13,11 +13,10 @@ public:
 	~Form();
 
 	std::string getName() const ;
-	void		setGrade(int grade);
-	int 		getGrade() const ;
+	int 		getSignedGrade() const ;
+    bool        getIsSigned() const;
 
     void        beSigned(Bureaucrat &instance_bureaucrat);
-    void        signForm();
 
     class GradeTooHighException : public std::exception {
         public:
@@ -35,5 +34,8 @@ private:
     const int     _executeGrade;
 
 };
+
+std::ostream	&operator<<(std::ostream &out, const Form &form_instance);
+
 
 #endif
