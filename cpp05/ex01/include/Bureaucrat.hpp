@@ -6,7 +6,7 @@
 /*   By: lboudjel <lboudjel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 22:09:08 by lboudjel          #+#    #+#             */
-/*   Updated: 2025/01/21 23:36:52 by lboudjel         ###   ########.fr       */
+/*   Updated: 2025/01/25 18:03:13 by lboudjel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,40 +41,20 @@ public:
 	void			decrement();
 
     void        signForm(Form &instance_form);
+    
+    class GradeTooHighException : public std::exception {
+    public:
+        virtual const char* what() const throw();
+    };
+    class GradeTooLowException : public std::exception {
+        public:
+            virtual const char* what() const throw();
+    };
 
 
 private:
 	const std::string _name;
 	int	_grade;
-};
-
-class GradeTooLowException : public std::exception {
-public:
-    explicit GradeTooLowException(const std::string& msg) : _errorMessage(msg) {}
-    
-    virtual ~GradeTooLowException() throw() {}
-
-    // Méthode what() renvoyant le Message d'erreur
-    virtual const char* what() const throw() {
-        return _errorMessage.c_str();
-    }
-
-private:
-    std::string _errorMessage;
-};
-
-class GradeTooHighException : public std::exception {
-public:
-    explicit GradeTooHighException(const std::string& msg) : _errorMessage(msg) {}
-    
-    virtual ~GradeTooHighException() throw() {}
-
-    virtual const char* what() const throw() {
-        return _errorMessage.c_str();
-    }
-
-private:
-    std::string _errorMessage;
 };
 
 std::ostream	&operator<<(std::ostream &out, const Bureaucrat &bureaucrat_instance);

@@ -6,13 +6,14 @@
 #    By: lboudjel <lboudjel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/29 17:08:11 by lboudjel          #+#    #+#              #
-#    Updated: 2025/01/21 22:05:39 by lboudjel         ###   ########.fr        #
+#    Updated: 2025/01/25 17:40:59 by lboudjel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		= Bureaucrat
 
 SRCS_NAMES  = 	Bureaucrat.cpp \
+				Form.cpp \
 				main.cpp
 OBJS_NAMES  = $(SRCS_NAMES:.cpp=.o)
 

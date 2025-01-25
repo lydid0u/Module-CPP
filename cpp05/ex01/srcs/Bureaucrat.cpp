@@ -13,13 +13,34 @@
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Bureaucpp                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lboudjel <lboudjel@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/21 22:08:08 by lboudjel          #+#    #+#             */
+/*   Updated: 2025/01/21 23:24:33 by lboudjel         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "Bureaucrat.hpp"
+
 Bureaucrat::Bureaucrat() : _name("Default"), _grade(1)
 {
     std::cout << "Bureaucrat Default constructor has been called" << std::endl;
 }
+
 Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name), _grade(grade)
 {
     std::cout << "Bureaucrat Constructor has been called" << std::endl;
+	if (grade > 150) {
+    	throw GradeTooLowException();
+	}
+	else if (grade < 1) {
+		throw GradeTooHighException();
+	}
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat& other) {
@@ -43,11 +64,28 @@ int Bureaucrat::getGrade() const {
 }
 
 void	Bureaucrat::setGrade(int grade){
-	_grade = grade;
+	if (grade > 150) {
+    	throw GradeTooLowException();
+	}
+	else if (grade < 1) {
+		throw GradeTooHighException();
+	}
+	else
+		_grade = grade;
 }
 
 Bureaucrat::~Bureaucrat(){
 	std::cout << getName() << " has been destroyed." << std::endl;
+}
+
+const char *Bureaucrat::GradeTooHighException::what() const throw() 
+{
+    return ("Bureaucrat : Grade too high\n");
+}
+
+const char *Bureaucrat::GradeTooLowException::what() const throw() 
+{
+    return ("Bureaucrat : Grade too low\n");
 }
 
 void	Bureaucrat::decrement()
@@ -57,12 +95,12 @@ void	Bureaucrat::decrement()
 		int grade = getGrade();
 		setGrade(++grade);
 		if (grade > 150) {
-			throw GradeTooLowException("Grade too Low, can't decrement.\n");
+			throw GradeTooLowException();
 		}
 		std::cout << "Bureaucrat: " << getName() << " NEW grade is valid: " << getGrade() << std::endl << std::endl;
 	}
-		catch (const GradeTooLowException &e) {
-		std::cerr << "Erreur : " << e.what() << std::endl;
+	catch (const GradeTooLowException &e) {
+		std::cerr << "Erreur : " << e.what() << std::endl; 
 	}
 }
 
@@ -73,7 +111,7 @@ void	Bureaucrat::increment()
 		int grade = getGrade();
 		setGrade(--grade);
 		if (grade < 1) {
-			throw GradeTooHighException("Grade too high, can't decrement.\n");
+			throw GradeTooHighException();
 		}
 		std::cout << "Bureaucrat: " << getName() << " NEW grade is valid: " << getGrade() << std::endl << std::endl;
 	}

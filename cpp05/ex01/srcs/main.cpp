@@ -6,15 +6,20 @@
 /*   By: lboudjel <lboudjel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 22:07:43 by lboudjel          #+#    #+#             */
-/*   Updated: 2025/01/21 23:37:30 by lboudjel         ###   ########.fr       */
+/*   Updated: 2025/01/25 17:40:43 by lboudjel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
 
-int main ( void )
+int main (void)
 {
-//
+	std::cout << BLUE;
+
+	Bureaucrat Bureau("Lydia", 15);
+	Bureau.setGrade(15);
+
+	std::cout << RED << "\n" << Bureau << BLUE << std::endl << std::endl;
 }
 
 /* int main()

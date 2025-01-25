@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Form.hpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lboudjel <lboudjel@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/25 17:36:29 by lboudjel          #+#    #+#             */
+/*   Updated: 2025/01/25 19:19:20 by lboudjel         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef FORM_HPP
 #define FORM_HPP
@@ -7,7 +18,7 @@
 class Form {
 public:
 	Form();
-    // Form(std::string name, int grade);
+    Form(std::string name, int signGrade, int executeGrade);
     Form(const Form &src);
     Form &operator=(const Form &rhs);
 	~Form();
@@ -29,7 +40,7 @@ public:
 
 private:
 	const std::string _name;
-	bool	_signed;
+	bool	_isSigned;
     const int     _signGrade;
     const int     _executeGrade;
 
