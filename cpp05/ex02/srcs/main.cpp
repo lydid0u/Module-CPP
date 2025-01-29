@@ -6,48 +6,66 @@
 /*   By: lboudjel <lboudjel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 22:07:43 by lboudjel          #+#    #+#             */
-/*   Updated: 2025/01/27 17:47:50 by lboudjel         ###   ########.fr       */
+/*   Updated: 2025/01/29 19:57:04 by lboudjel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Form.hpp"
+#include "AForm.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
-int main (void)
+
+int	main(void)
 {
-    try
-    {        
-        Bureaucrat Worker ("Worker", 140);
-        Bureaucrat Boss ("Lydia", 10);
+	try
+	{
+		Bureaucrat Sirine("Sirine", 137);
+		Bureaucrat Adnan("Adnan", 26);
+		Bureaucrat Moha("Moha", 1);
+        
+		ShrubberyCreationForm Shrub("Shrub");
+		RobotomyRequestForm Robot("Wall-E");
+		PresidentialPardonForm President("Macron");
+        
         std::cout << std::endl;
-        
-        //un bureaucrat a partir du grade 139 peux signer le contrat du worker, pas en dessous
-	    Form Worker_contract ("Worker's Contract", 140, 140);
-        Form Boss_contract ("Boss's Contract", 1, 1);
-        
-        std::cout << std::endl << Worker_contract << std::endl;
+
+        //         Shrubbery        //
         try
         {
-            Boss.signForm(Worker_contract);
+            Sirine.signForm(Shrub);
+		    Sirine.executeForm(Shrub);
         }
         catch(const std::exception& e)
         {
-            std::cout << e.what();
+            std::cout << RED << e.what() << RESET << std::endl;
         }
-        std::cout << std::endl << Worker_contract << std::endl << std::endl;
-    
+
+        //         Robotomy        //
         try
         {
-            Worker.signForm(Boss_contract);
-            std::cout << std::endl;
+            Moha.signForm(Robot);
+		    Moha.executeForm(Robot);
         }
-        catch (const std::exception &e)
+        catch(const std::exception& e)
         {
             std::cout << RED << e.what() << RESET << std::endl;
         }
-    }
-    catch (const std::exception &e)
-    {
-        std::cout << e.what() << std::endl;
-    }
-	return (0);
+        
+        //         President        //
+        try
+        {
+            Moha.signForm(President);
+		    Moha.executeForm(President);
+        }
+        catch(const std::exception& e)
+        {
+            std::cout << RED << e.what() << RESET << std::endl;
+        }
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << "\n";
+	}
+	return(0);
 }

@@ -6,7 +6,7 @@
 #    By: lboudjel <lboudjel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/29 17:08:11 by lboudjel          #+#    #+#              #
-#    Updated: 2025/01/29 17:38:30 by lboudjel         ###   ########.fr        #
+#    Updated: 2025/01/29 20:17:07 by lboudjel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ SRCS_NAMES  = 	Bureaucrat.cpp \
 				ShrubberyCreationForm.cpp \
 				PresidentialPardonForm.cpp \
 				RobotomyRequestForm.cpp \
+				Intern.cpp \
 				main.cpp
 OBJS_NAMES  = $(SRCS_NAMES:.cpp=.o)
 

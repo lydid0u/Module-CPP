@@ -13,20 +13,6 @@
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
 
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Bureaucpp                                     :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: lboudjel <lboudjel@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/21 22:08:08 by lboudjel          #+#    #+#             */
-/*   Updated: 2025/01/21 23:24:33 by lboudjel         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include "Bureaucrat.hpp"
-
 Bureaucrat::Bureaucrat() : _name("Default"), _grade(1)
 {
     std::cout << "Bureaucrat Default constructor has been called" << std::endl;
