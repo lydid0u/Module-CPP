@@ -22,7 +22,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(std::string const &target) : AForm(
 	std::cout << "Shrubbery Default constructor called" << std::endl;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& other) {
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& other) : AForm(other) {
 	*this = other;
     std::cout << "Shrubbery copy constructor called.\n";
 }

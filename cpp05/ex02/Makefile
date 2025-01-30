@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME		= Bureaucrat
+NAME		= ShrubRobotPresident
 
 SRCS_NAMES  = 	Bureaucrat.cpp \
 				AForm.cpp \

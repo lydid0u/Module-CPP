@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME		= Bureaucrat
+NAME		= Form
 
 SRCS_NAMES  = 	Bureaucrat.cpp \
 				Form.cpp \

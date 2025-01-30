@@ -22,7 +22,8 @@ RobotomyRequestForm::RobotomyRequestForm(std::string const &target) : AForm("Rob
 	std::cout << "Robotomy Default constructor called" << std::endl;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& other) {
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& other) : AForm(other)
+{
 	*this = other;
     std::cout << "Robotomy copy constructor called.\n";
 }
@@ -46,6 +47,7 @@ void	RobotomyRequestForm::execute(Bureaucrat const &executor) const
 		throw GradeTooLowException();	
 	else
 	{
+		std::cout << _target << " " << this->getName() << std::endl;
 		std::cout << BLUE << "*drill noises*" << RESET << std::endl;
 		std::srand(std::time(0));
 		if (std::rand() % 2 == 0)

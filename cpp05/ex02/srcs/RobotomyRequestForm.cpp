@@ -22,7 +22,7 @@ RobotomyRequestForm::RobotomyRequestForm(std::string const &target) : AForm("Rob
 	std::cout << "Robotomy Default constructor called" << std::endl;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& other) {
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& other) : AForm(other) {
 	*this = other;
     std::cout << "Robotomy copy constructor called.\n";
 }

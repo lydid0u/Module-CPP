@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME		= Bureaucrat
+NAME		= Intern
 
 SRCS_NAMES  = 	Bureaucrat.cpp \
 				AForm.cpp \

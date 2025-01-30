@@ -22,7 +22,7 @@ PresidentialPardonForm::PresidentialPardonForm(std::string const &target) : AFor
 	std::cout << "President Default constructor called" << std::endl;
 }
 
-PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& other) {
+PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& other) : AForm(other) {
 	*this = other;
     std::cout << "President copy constructor called.\n";
 }
