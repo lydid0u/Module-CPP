@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbarry <lbarry@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lboudjel <lboudjel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/26 21:36:58 by lbarry            #+#    #+#             */
-/*   Updated: 2024/08/30 16:15:05 by lbarry           ###   ########.fr       */
+/*   Created: 2025/01/30 15:46:08 by lboudjel          #+#    #+#             */
+/*   Updated: 2025/01/30 17:48:03 by lboudjel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,10 @@ int	main(void)
 		Intern someRandomIntern;
 		std::cout << std::endl;
 		std::cout << "Intern :" << std::endl;
-		AForm *rrf = someRandomIntern.makeForm("robotomy request", "nora");
+		AForm *rrf = someRandomIntern.makeForm("shrubbery creation", "NORAAA");
 		std::cout << std::endl;
 		if (!rrf)
 			return 1;
-		std::cout << "Name : " << rrf->getName() << std::endl;
 		Ocea.signForm(*rrf);
 		Ocea.executeForm(*rrf);
 		delete rrf;

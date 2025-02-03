@@ -6,7 +6,7 @@
 /*   By: lboudjel <lboudjel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 22:07:43 by lboudjel          #+#    #+#             */
-/*   Updated: 2025/01/29 19:57:04 by lboudjel         ###   ########.fr       */
+/*   Updated: 2025/01/30 17:05:17 by lboudjel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	main(void)
         {
             std::cout << RED << e.what() << RESET << std::endl;
         }
-
+        
         //         Robotomy        //
         try
         {

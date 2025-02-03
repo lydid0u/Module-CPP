@@ -6,7 +6,7 @@
 /*   By: lboudjel <lboudjel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 22:09:08 by lboudjel          #+#    #+#             */
-/*   Updated: 2025/01/29 17:50:16 by lboudjel         ###   ########.fr       */
+/*   Updated: 2025/01/30 16:00:26 by lboudjel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,21 @@
 #define BLUE	"\033[34m" 
 #define YELLOW  "\033[33m"
 #define GREEN   "\033[32m" 
+#define MAGENTA "\033[35m"
+#define CYAN    "\033[36m"
+#define WHITE   "\033[37m"
+#define BLACK   "\033[30m"
+#define BOLD    "\033[1m"
+#define UNDERLINE "\033[4m"
+#define REVERSED "\033[7m"
+#define GREY    "\033[90m"
+#define LIGHT_RED "\033[91m"
+#define LIGHT_GREEN "\033[92m"
+#define LIGHT_YELLOW "\033[93m"
+#define LIGHT_BLUE "\033[94m"
+#define LIGHT_MAGENTA "\033[95m"
+#define LIGHT_CYAN "\033[96m"
+#define LIGHT_WHITE "\033[97m"
 
 class AForm;
 

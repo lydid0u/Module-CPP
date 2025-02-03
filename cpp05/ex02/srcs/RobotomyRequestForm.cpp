@@ -6,7 +6,7 @@
 /*   By: lboudjel <lboudjel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 17:38:22 by lboudjel          #+#    #+#             */
-/*   Updated: 2025/01/29 20:15:56 by lboudjel         ###   ########.fr       */
+/*   Updated: 2025/01/30 17:48:53 by lboudjel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	RobotomyRequestForm::execute(Bureaucrat const &executor) const
 		std::cout << BLUE << "*drill noises*" << RESET << std::endl;
 		std::srand(std::time(0));
 		if (std::rand() % 2 == 0)
-			std::cout << GREEN << this->getName() << " has been robotomized successfully" << RESET << std::endl;
+			std::cout << GREEN << _target << " has been robotomized successfully" << RESET << std::endl;
 		else
 			std::cout << RED << "The robotomy of " << this->getName() << " has failed !" << RESET << std::endl;
 	}

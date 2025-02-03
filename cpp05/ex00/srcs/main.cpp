@@ -6,7 +6,7 @@
 /*   By: lboudjel <lboudjel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 22:07:43 by lboudjel          #+#    #+#             */
-/*   Updated: 2025/01/25 19:16:11 by lboudjel         ###   ########.fr       */
+/*   Updated: 2025/01/30 17:01:07 by lboudjel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int main() 
 {
 	try {
-		Bureaucrat Bureau("Lydia", 151);
+		Bureaucrat Bureau("Lydia", 150);
 		
 		std::cout << "\n-----Checking << operator-----\n";
 		std::cout << GREEN << Bureau << RESET << std::endl << std::endl;

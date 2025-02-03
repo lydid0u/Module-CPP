@@ -6,7 +6,7 @@
 /*   By: lboudjel <lboudjel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 20:11:52 by lboudjel          #+#    #+#             */
-/*   Updated: 2025/01/29 20:22:45 by lboudjel         ###   ########.fr       */
+/*   Updated: 2025/01/30 17:36:13 by lboudjel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ public:
 	Intern& operator=(const Intern &other);
 	~Intern();
 
-	AForm *makeForm(std::string formName, std::string target);
+	AForm *makeForm(std::string const &formName, std::string const &target);
 };
 
 #endif // Intern_HPP

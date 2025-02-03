@@ -1,48 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   Serializer.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lboudjel <lboudjel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/26 22:40:00 by lboudjel          #+#    #+#             */
-/*   Updated: 2025/01/27 20:06:05 by lboudjel         ###   ########.fr       */
+/*   Created: 2025/01/21 22:09:08 by lboudjel          #+#    #+#             */
+/*   Updated: 2025/02/03 15:53:11 by lboudjel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
-#ifndef ANIMAL_HPP
-# define ANIMAL_HPP
+#ifndef SERIALIZER_HPP
+# define SERIALIZER_HPP
 
-#include <ostream>
 #include <iostream>
 #include <string>
-#include "Brain.hpp"
+#include <stdint.h>
 
 #define RESET   "\033[0m"
-
-#define BOLD        "\033[1m"
-#define UNDERLINE   "\033[4m"
-
 #define RED     "\033[31m"
 #define BLUE    "\033[34m" 
 #define YELLOW  "\033[33m"
-#define GREEN   "\033[32m"
-#define MAGENTA "\033[35m"
-#define CYAN    "\033[36m"
+#define GREEN   "\033[32m" 
 
-class Animal 
-{
+typedef struct Data {
+    int age;
+    std::string name;
+    std::string city;
+} Data;
+
+
+class Serializer {
+    private:
+        Serializer();
+        Serializer(const Serializer &copy);
+        ~Serializer();
+        
+        Serializer &operator=(const Serializer &copy);
+
     public:
-        Animal();
-        Animal(const Animal& other);
-        Animal& operator=(const Animal& other);
-        virtual ~Animal();
-        virtual std::string getType() const;
-        virtual void makeSound() const = 0;
-    
-    protected:
-        std::string _type;
+
+        static uintptr_t serialize(Data* ptr);
+        static Data* deserialize(uintptr_t raw);
 };
 
-#endif
+#endif 

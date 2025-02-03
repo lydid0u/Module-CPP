@@ -6,7 +6,7 @@
 /*   By: lboudjel <lboudjel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 16:58:02 by lboudjel          #+#    #+#             */
-/*   Updated: 2025/01/29 19:49:14 by lboudjel         ###   ########.fr       */
+/*   Updated: 2025/01/30 17:47:45 by lboudjel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 		throw NotSignedException();
 	else if (executor.getGrade() > this->getExecuteGrade())
 		throw GradeTooLowException();
-	std::ofstream 	file_tree((executor.getName() + "_shrubbery").c_str());
+	std::ofstream 	file_tree((_target + "_shrubbery").c_str());
 	if (file_tree.is_open()) 
 	{
     	std::cout << BLUE << "File_tree has been created ! " << RESET << std::endl;

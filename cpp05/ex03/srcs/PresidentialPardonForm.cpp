@@ -6,7 +6,7 @@
 /*   By: lboudjel <lboudjel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 17:38:09 by lboudjel          #+#    #+#             */
-/*   Updated: 2025/01/29 19:50:44 by lboudjel         ###   ########.fr       */
+/*   Updated: 2025/01/30 17:46:49 by lboudjel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	PresidentialPardonForm::execute(Bureaucrat const &executor) const
 	else if (executor.getGrade() > this->getExecuteGrade())
 		throw GradeTooLowException();	
 	else
-		std::cout << YELLOW << "Informs that " << executor.getName() << " has been pardoned by Zaphod Beeblebrox." << RESET << std::endl;
+		std::cout << YELLOW << "Informs that " << _target << " has been pardoned by Zaphod Beeblebrox." << RESET << std::endl;
 }
 
 

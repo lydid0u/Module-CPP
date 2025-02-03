@@ -6,7 +6,7 @@
 /*   By: lboudjel <lboudjel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 20:14:53 by lboudjel          #+#    #+#             */
-/*   Updated: 2025/01/29 20:23:06 by lboudjel         ###   ########.fr       */
+/*   Updated: 2025/01/30 17:39:37 by lboudjel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,31 +36,32 @@ Intern::~Intern() {
 	std::cout << "Intern Destructor called" << std::endl;
 }
 
-AForm* createRobotomyRequest(std::string target) {
+AForm* createRobotomyRequest(std::string const &target) {
     return new RobotomyRequestForm(target);
 }
 
-AForm* createPresidentialPardon(std::string target) {
+AForm* createPresidentialPardon(std::string const &target) {
     return new PresidentialPardonForm(target);
 }
 
-AForm* createShrubberyCreation(std::string target) {
+AForm* createShrubberyCreation(std::string const &target) {
     return new ShrubberyCreationForm(target);
 }
 
-AForm* Intern::makeForm(std::string formName, std::string target) {
+AForm* Intern::makeForm(std::string const &formName, std::string const &target) 
+{
     const std::string formNames[] = {
         "robotomy request",
         "presidential pardon",
         "shrubbery creation"
     };
 
-    AForm* (*formCreators[])(std::string) = {
+    AForm* (*formCreators[])(const std::string&) = {
         createRobotomyRequest,
         createPresidentialPardon,
         createShrubberyCreation
     };
-
+    
     for (int i = 0; i < 3; ++i) {
         if (formNames[i] == formName) {
             std::cout << GREEN << "Intern creates " << formName << " form." << RESET << std::endl;

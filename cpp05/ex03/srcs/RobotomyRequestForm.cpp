@@ -6,7 +6,7 @@
 /*   By: lboudjel <lboudjel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 17:38:22 by lboudjel          #+#    #+#             */
-/*   Updated: 2025/01/29 20:15:35 by lboudjel         ###   ########.fr       */
+/*   Updated: 2025/01/30 17:45:18 by lboudjel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ RobotomyRequestForm::RobotomyRequestForm() : AForm("RobotomyRequestForm", 72, 45
 	std::cout << "Robotomy Default constructor has been called" << std::endl;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(std::string const &target) : AForm("RobotomyRequestForm", 72, 45), _target(target)
+RobotomyRequestForm::RobotomyRequestForm(std::string const &target) : AForm("RobotomyRequestForm", 72, 45), _target(target + "_target")
 {
 	std::cout << "Robotomy Default constructor called" << std::endl;
 }
@@ -47,11 +47,10 @@ void	RobotomyRequestForm::execute(Bureaucrat const &executor) const
 		throw GradeTooLowException();	
 	else
 	{
-		std::cout << _target << " " << this->getName() << std::endl;
 		std::cout << BLUE << "*drill noises*" << RESET << std::endl;
 		std::srand(std::time(0));
 		if (std::rand() % 2 == 0)
-			std::cout << GREEN << this->getName() << " has been robotomized successfully" << RESET << std::endl;
+			std::cout << GREEN << _target << " has been robotomized successfully" << RESET << std::endl;
 		else
 			std::cout << RED << "The robotomy of " << this->getName() << " has failed !" << RESET << std::endl;
 	}

@@ -6,7 +6,7 @@
 /*   By: lboudjel <lboudjel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 17:36:23 by lboudjel          #+#    #+#             */
-/*   Updated: 2025/01/29 19:40:39 by lboudjel         ###   ########.fr       */
+/*   Updated: 2025/01/30 18:30:39 by lboudjel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 AForm::AForm() : _name("Default"), _signGrade(150), _executeGrade(150)
 {
     std::cout << "AForm Default constructor has been called" << std::endl;
+	_isSigned = 0;
 }
 
 AForm::AForm(std::string name, int signGrade, int executeGrade) : _name(name), _signGrade(signGrade), _executeGrade(executeGrade)
@@ -26,10 +27,12 @@ AForm::AForm(std::string name, int signGrade, int executeGrade) : _name(name), _
 	else if (signGrade < 1) {
 		throw GradeTooHighException();
 	}
+	_isSigned = 0;
 }
 
 AForm::AForm(const AForm& other) :  _name(other._name), _signGrade(other._signGrade), _executeGrade(other._executeGrade)
 {
+	_isSigned = (other._isSigned);
 	*this = other;
     std::cout << "AForm copy constructor called.\n";
 }
@@ -44,7 +47,6 @@ AForm& AForm::operator=(const AForm& other) {
 AForm::~AForm(){
 	std::cout << getName() << " has been destroyed." << std::endl;
 }
-
 
 std::string AForm::getName() const 
 {

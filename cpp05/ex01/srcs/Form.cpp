@@ -6,7 +6,7 @@
 /*   By: lboudjel <lboudjel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 17:36:23 by lboudjel          #+#    #+#             */
-/*   Updated: 2025/01/27 17:49:32 by lboudjel         ###   ########.fr       */
+/*   Updated: 2025/01/30 17:00:11 by lboudjel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 Form::Form() : _name("Default"), _signGrade(150), _executeGrade(150)
 {
+	_isSigned = 0;
     std::cout << "Form Default constructor has been called" << std::endl;
 }
 
@@ -26,15 +27,19 @@ Form::Form(std::string name, int signGrade, int executeGrade) : _name(name), _si
 	else if (signGrade < 1) {
 		throw GradeTooHighException();
 	}
+	_isSigned = 0;
 }
 
 Form::Form(const Form& other) :  _name(other._name), _signGrade(other._signGrade), _executeGrade(other._executeGrade)
 {
+	_isSigned = other._isSigned;
 	*this = other;
     std::cout << "Form copy constructor called.\n";
 }
 
-Form& Form::operator=(const Form& other) {
+Form& Form::operator=(const Form& other) 
+{
+	_isSigned = 0;
 	std::cout << "Copy assignment operator called" << std::endl;
    	if (this != &other) 
         _isSigned = other._isSigned;
