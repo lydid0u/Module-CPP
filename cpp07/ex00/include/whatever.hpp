@@ -11,10 +11,10 @@
 #define GREEN   "\033[32m"
 
 template <typename S>
-void swap(S *a, S *b) {
-    S c = *a;
-	*a = *b;
-	*b = c;
+void swap(S& a, S& b) {
+    S c = a;
+	a = b;
+	b = c;
 }
 
 template <typename T>
