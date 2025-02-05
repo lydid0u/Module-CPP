@@ -4,6 +4,8 @@
 
 #include <iostream>
 #include <cctype>
+#include <string>
+#include <cstring>
 #include <ctype.h> 
 
 #define RESET   "\033[0m"

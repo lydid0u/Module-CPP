@@ -1,19 +1,24 @@
 #include "iter.hpp"
 
-void print(int& value) {
+void print_int(int& value) {
     std::cout << value << std::endl;
 }
-// int main() {
-//     std::string tab[] = { "AAA", "VDVFD", "SDFDF", "fdsgd" };
 
-//     iter(tab, 4, );
-// }
+void insert_str(std::string& str) {
+	std::cout << str.insert(0, "iter ") << std::endl;
+	
+}
 
 
 int main() {
-    int arr[] = {1, 2, 3, 4, 5};
-
-    iter(arr, 5, print);
-
-    return 0;
+    std::cout << GREEN << "int tab:" << RESET << std::endl;
+    int int_tab[] = {1, 2, 3, 4, 5};
+	iter(int_tab, 5, print_int);
+    std::cout << std::endl;
+    
+    std::cout << GREEN << "string tab:" << RESET << std::endl;
+	std::string string_tab[] = {"UN", "DEUX", "TROis", "quatre"};
+	iter(string_tab, 4, insert_str);
+    
+	return 0;
 }
