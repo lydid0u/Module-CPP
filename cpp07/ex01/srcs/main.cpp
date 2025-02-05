@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lboudjel <lboudjel@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/05 16:11:51 by lboudjel          #+#    #+#             */
+/*   Updated: 2025/02/05 16:11:51 by lboudjel         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "iter.hpp"
 
 void print_int(int& value) {
@@ -8,7 +20,6 @@ void insert_str(std::string& str) {
 	std::cout << str.insert(0, "iter ") << std::endl;
 	
 }
-
 
 int main() {
     std::cout << GREEN << "int tab:" << RESET << std::endl;

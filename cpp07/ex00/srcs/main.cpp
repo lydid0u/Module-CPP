@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lboudjel <lboudjel@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/05 16:12:09 by lboudjel          #+#    #+#             */
+/*   Updated: 2025/02/05 17:32:59 by lboudjel         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "whatever.hpp"
 
 int main()
@@ -26,6 +38,6 @@ int main()
 	std::cout << YELLOW << "MAX :\n" << RESET;
 
 	std::cout << ::max(6, 12) << std::endl;
-	std::cout << ::max('a', 'z') << std::endl;
 	std::cout << ::max(42.0f, 10.5f) << std::endl;
+	std::cout << ::max('a', 'z') << std::endl;
 }
