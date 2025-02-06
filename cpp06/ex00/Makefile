@@ -6,11 +6,11 @@
 #    By: lboudjel <lboudjel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/29 17:08:11 by lboudjel          #+#    #+#              #
-#    Updated: 2025/01/31 19:03:03 by lboudjel         ###   ########.fr        #
+#    Updated: 2025/02/04 15:54:07 by lboudjel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		= ScalarConverter
+NAME		= convert
 
 SRCS_NAMES  = 	ScalarConverter.cpp \
 				main.cpp

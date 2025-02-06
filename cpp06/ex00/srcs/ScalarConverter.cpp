@@ -6,7 +6,7 @@
 /*   By: lboudjel <lboudjel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 18:33:55 by lboudjel          #+#    #+#             */
-/*   Updated: 2025/02/03 15:48:46 by lboudjel         ###   ########.fr       */
+/*   Updated: 2025/02/04 15:56:46 by lboudjel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,9 @@ ScalarConverter::ScalarConverter(const ScalarConverter &other) {
 }
 
 ScalarConverter &ScalarConverter::operator=(const ScalarConverter &other) {
-    (void)other;
-    return (*this);
+	if (this != &other)
+		*this = other;
+    return *this;    
 }
 
 ScalarConverter::~ScalarConverter() {}

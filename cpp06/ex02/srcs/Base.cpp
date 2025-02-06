@@ -47,7 +47,7 @@ void	identify(Base *ptr)
         std::cout << "Unknown type" << std::endl;
 }
 
-void	identify(Base& p)
+void	identify(Base &p)
 {
 	try
 	{
