@@ -6,15 +6,14 @@
 #    By: lboudjel <lboudjel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/29 17:08:11 by lboudjel          #+#    #+#              #
-#    Updated: 2025/02/11 17:25:26 by lboudjel         ###   ########.fr        #
+#    Updated: 2025/02/12 16:34:46 by lboudjel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		= btc
 
 SRCS_NAMES  = BitcoinExchange.cpp \
-				main.cpp \
-
+				main.cpp
 OBJS_NAMES  = $(SRCS_NAMES:.cpp=.o)
 
 DIR_INCL	= include
