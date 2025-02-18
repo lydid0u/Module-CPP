@@ -6,7 +6,7 @@
 /*   By: lboudjel <lboudjel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 22:07:43 by lboudjel          #+#    #+#             */
-/*   Updated: 2025/02/12 17:40:04 by lboudjel         ###   ########.fr       */
+/*   Updated: 2025/02/18 17:16:13 by lboudjel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,19 +20,24 @@
 // Trouver dans fichier infile le nombre de btc et trouver la valeur avec la date la plus proche
 // Afficher Date => Nbr de btc = Valeur a la date
 
-int main(int argc, char **argv) 
-{
-	if (argc == 2) {
-		std::ifstream file(argv[1]);
-		if (file.is_open())
-			::BitcoinExchange::openingFile(file);
-		else
-			std::cerr << "An error occured while opening the file : " << argv[1] << std::endl;
-	}
-	else
-	{
-		std::cout << "Error you need one argument : " << BLUE << "<./btc + \"file.txt\">" << std::endl;
+// main.cpp
+#include "BitcoinExchange.hpp"
+
+int main(int argc, char **argv) {
+    if (argc == 2) {
+    	try {
+    	    BitcoinExchange btc;
+    	    
+			btc.checkDataBase("data.csv");
+    	   	btc.checkInputFile(argv[1]);
+    	}
+    	catch(const std::exception& e) {
+    	    std::cerr << IRED << e.what() << RESET << std::endl;
+    	    return 1;
+    	}
+	} else {
+		std::cerr << RED << "Error: could not open file => " << BLUE << "<./btc + \"input.txt\">" << RESET << std::endl;
 		return (1);
 	}
-	return (0);
+    return (0);
 }
