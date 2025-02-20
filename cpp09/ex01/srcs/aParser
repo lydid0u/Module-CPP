@@ -1,0 +1,8 @@
+a parser :
+3 chiffre a la suite					OK
+operateur pas en dernier				OK
+lettre au milieu						OK
+nombre									OK
+operateur en 1							OK
+1 seul nombre en tout 1e et pas 2		
+plusieurs operateur a la suite			OK

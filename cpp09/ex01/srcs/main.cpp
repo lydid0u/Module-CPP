@@ -6,7 +6,7 @@
 /*   By: lboudjel <lboudjel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 22:07:43 by lboudjel          #+#    #+#             */
-/*   Updated: 2025/02/18 20:24:39 by lboudjel         ###   ########.fr       */
+/*   Updated: 2025/02/19 18:55:48 by lboudjel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,41 @@
 #include <string>
 #include <cstdio>
 
+class Errorr : public std::exception {
+    public:
+        virtual const char* what() const throw();
+    };
 
-// Format dans fichier csv -> YYYY-MM-DD,Value = 2021-09-21,42901.56
-// Format dans infile date | value = 2011-01-03 | 3
-// Ouvrir le fichier, check les droits, lire tout le fichier et check les dates + valeurs
-// Parsing -> Format Date = 0YYYY4-MM-DD YYYY = 0-2025, 0-12, 0-31
-// Valeur entre 0 - 1000 : Flotant ou int
-// Trouver dans fichier infile le nombre de btc et trouver la valeur avec la date la plus proche
-// Afficher Date => Nbr de btc = Valeur a la date
+const char *Errorr::what() const throw() 
+{
+	return ("Bureaucrat : Grade too low\n");
+}
 
-// main.cpp
+class ErrorOperator : public std::exception {
+    public:
+        virtual const char* what() const throw();
+    };
+
+const char *ErrorOperator::what() const throw() 
+{
+	return ("operator not used correctly\n");
+}
+
+class CharIncorrect : public std::exception {
+    public:
+        virtual const char* what() const throw();
+    };
+
+const char *CharIncorrect::what() const throw() 
+{
+	return ("not a digit or an operator\n");
+}
+
 std::stack<char> mystack;
+
+bool isDigit(char c) {
+    return c >= '0' && c <= '9';
+}
 
 int calc(int v1, int v2, char c)
 {
@@ -43,7 +67,7 @@ int calc(int v1, int v2, char c)
 	if (c == '/' && v2 != 0)
 		return (v1 / v2);
 	std::cout << "testtt" << std::endl;
-	throw "ntm";
+	throw Errorr();
 }
 
 int function()
@@ -65,23 +89,15 @@ int function()
 		{
 			op = mystack.top();
 			mystack.pop();
-			if (mystack.empty())
-				return (total);
 			v2 = mystack.top();
 		}
 		else
 		{
 			v2 = mystack.top();
-			std::cout << "v2 : " << v2 << std::endl;
 			mystack.pop();
-			if (mystack.empty())
-				return (total);
 			op = mystack.top();
-			std::cout << "op : " << op << std::endl;
 		}
 		mystack.pop();
-		if (mystack.empty())
-			return (total);
 		total = calc(v1, v2 , op);
 		std::cout << "test" << std::endl;
 		std::cout << "v1 -> " << v1 << std::endl;
@@ -95,8 +111,8 @@ int function()
 int main(int argc, char **argv)
 {
 	try {
-		if (argc < 2)
-			return (1);
+		if (argc < 2 || !strchr("+-/*", argv[argc - 1][0]) || (strchr("+-/*", argv[argc - 1][0]) && strchr("+-/*", argv[argc - 2][0])) || strchr("+-/*", argv[1][0]))
+			throw ErrorOperator();
 		for (int i = argc - 1; i > 0; i--)
 		{
 			if (argv[i][1])
@@ -108,7 +124,7 @@ int main(int argc, char **argv)
 			else if (strchr("+-/*", argv[i][0]))
 				mystack.push((argv[i][0]));
 			else
-				throw "not a digit or an operator";
+				throw CharIncorrect();
 		}
 		try {
 			std::cout << function() << std::endl;
