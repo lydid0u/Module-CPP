@@ -6,11 +6,11 @@
 #    By: lboudjel <lboudjel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/29 17:08:11 by lboudjel          #+#    #+#              #
-#    Updated: 2025/02/18 19:41:45 by lboudjel         ###   ########.fr        #
+#    Updated: 2025/02/21 20:58:51 by lboudjel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		= rpn
+NAME		= RPN
 
 SRCS_NAMES  = main.cpp
 OBJS_NAMES  = $(SRCS_NAMES:.cpp=.o)
