@@ -2,5 +2,4 @@ a parser :
 operateur pas en dernier				OK
 lettre au milieu						OK
 nombre									OK
-operateur en 1							OK
-1 seul nombre en tout 1e et pas 2		
+operateur en 1							OK	

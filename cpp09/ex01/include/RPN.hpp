@@ -22,7 +22,34 @@
 #include <cstdio>
 #include <algorithm>
 
+class notEnoughNumberStack : public std::exception {
+    public:
+        virtual const char* what() const throw();
+};
 
+class ErrorOperator : public std::exception {
+    public:
+        virtual const char* what() const throw();
+};
 
+class CharIncorrect : public std::exception {
+    public:
+        virtual const char* what() const throw();
+};
+
+class isANumber : public std::exception {
+    public:
+        virtual const char* what() const throw();
+};
+
+class numberLeftStack : public std::exception {
+    public:
+        virtual const char* what() const throw();
+};
+
+class notEnoughArgument : public std::exception {
+    public:
+        virtual const char* what() const throw();
+};
 
 #endif
