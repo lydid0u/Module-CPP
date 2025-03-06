@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   PMergeMe.hpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lboudjel <lboudjel@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/05 21:44:17 by lboudjel          #+#    #+#             */
+/*   Updated: 2025/03/05 22:06:16 by lboudjel         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PMERGEME_HPP
 # define PMERGEME_HPP
 
@@ -18,8 +30,8 @@ class PmergeMe {
 		~PmergeMe();
 		template <typename Container>
 		void 	algorithm(char **nbr, Container &container, std::clock_t &start, std::clock_t &end);
-		template <typename Iterator>
-		void	merge(Iterator start, Iterator end);
+		template <typename Container>
+		void	fordJohnsonSort(Container &container);
 
 	private:
 		PmergeMe();
