@@ -11,7 +11,7 @@ PmergeMe::PmergeMe(char **argv) {
         beforeContainer.push_back(atoi(argv[i]));
     printRange(beforeContainer, 1);
 
-	//calling algorithm with vector container
+    //calling algorithm with vector container
     algorithm(argv, vector, vectorClockStart, vectorClockEnd);
     //calling algorithm with deque container
     algorithm(argv, deque, dequeClockStart, dequeClockEnd);
@@ -39,50 +39,52 @@ PmergeMe&    PmergeMe::operator=(const PmergeMe &other) {
 
 template <typename T>
 void    printRange(const T &container, bool before) {
-	int i;
-	if (before == true)
-		std::cout << "Before : ";
-	else
-		std::cout << "After : ";
-	for (i = 0; i < (int)container.size() - 1; i++)
-		std::cout << container[i] << " ";
-	if (i < (int)container.size())
-		std::cout << container[i];
-	std::cout << std::endl;
+    int i;
+    if (before == true)
+        std::cout << "Before : ";
+    else
+        std::cout << "After : ";
+    for (i = 0; i < (int)container.size() - 1; i++)
+        std::cout << container[i] << " ";
+    if (i < (int)container.size())
+        std::cout << container[i];
+    std::cout << std::endl;
 }
 
 void    parsing(char **nbr) {
-	for (int i = 0; nbr[i]; i++) {
-		char *endptr;
+    for (int i = 0; nbr[i]; i++) {
+        char *endptr;
         long nb = strtol(nbr[i], &endptr, 10);
         if (*endptr != '\0')
-			throw std::invalid_argument("invalid input, value is not an int -> " + std::string(nbr[i]));
+            throw std::invalid_argument("invalid input, value is not an int -> " + std::string(nbr[i]));
         if (nb < 0)
-			throw std::invalid_argument("not a positive number -> " + std::string(nbr[i]));
+            throw std::invalid_argument("not a positive number -> " + std::string(nbr[i]));
         if (nb > INT_MAX || nb < INT_MIN)
-			throw std::invalid_argument("number not in the range of an int  -> " + std::string(nbr[i]));
+            throw std::invalid_argument("number not in the range of an int  -> " + std::string(nbr[i]));
     }
 
     for (int i = 0; nbr[i]; i++) {
-		long nb = strtol(nbr[i], NULL, 10);
+        long nb = strtol(nbr[i], NULL, 10);
         for (int j = i + 1; nbr[j]; j++) {
-			if (nb == strtol(nbr[j], NULL, 10))
-				throw std::invalid_argument("number found twice -> " + std::string(nbr[j]));
+            if (nb == strtol(nbr[j], NULL, 10))
+                throw std::invalid_argument("number found twice -> " + std::string(nbr[j]));
         }
     }
 }
 
 template <typename Container>
 void PmergeMe::algorithm(char **nbr, Container &container, std::clock_t &start, std::clock_t &end) {
-	start = std::clock();
-	container.clear();
-	for (int i = 0; nbr[i]; i++)
-		container.push_back(atoi(nbr[i]));
-	fordJohnsonSort<Container>(container);
-	end = std::clock();
+    start = std::clock();
+    container.clear();
+    for (int i = 0; nbr[i]; i++)
+        container.push_back(atoi(nbr[i]));
+    fordJohnsonSort<Container>(container);
+    end = std::clock();
 }
 
-// jacobsthal : 0 1 1 3 5 11 22 ...
+/* jacobsthal : 0 1 1 3 5 11 21 43 ...
+    J(0) = 0 && J(1) = 1
+    -> J(n) = J(n-1) + 2×J(n-2) pour n ≥ 2 */
 int jacobsthalNumber(int n) {
     if (n == 0)
         return 0;
@@ -95,16 +97,32 @@ template <typename Container>
 void PmergeMe::fordJohnsonSort(Container &container) {
     if (container.size() <= 1)
         return;
-    std::vector< std::pair<int, int> > pairs;
-    int oddNumber = -1;
-    bool hasOddNumber = false;
+    Container mainContainer;
+    std::vector<int> smallerValues, biggerValuesPosition;
+    int oddNumber;
+    bool hasOddNumber;
 
-    //si size impair, on stock le dernier element
+    createAndSortPairs<Container>(container, mainContainer, smallerValues, biggerValuesPosition, oddNumber, hasOddNumber);
+    binaryInsertSort<Container>(mainContainer, smallerValues, biggerValuesPosition);
+    
+    container = mainContainer;
+}
+
+template <typename Container>
+void PmergeMe::createAndSortPairs(Container &container, Container &mainContainer, std::vector<int> &smallerValues, std::vector<int> &biggerValuesPosition, int &oddNumber, bool &hasOddNumber) {
+    if (container.size() <= 1)
+        return;
+    std::vector< std::pair<int, int> > pairs;
+    oddNumber = -1;
+    hasOddNumber = false;
+
+    //si size est impair on stocke le dernier element
     if (container.size() % 2 != 0) {
         oddNumber = container[container.size() - 1];
         hasOddNumber = true;
     }
-    //on cree les pairs, a = petit / b = grand
+
+    //on cree les paires, a = petit / b = grand
     for (size_t i = 0; i < container.size() / 2; ++i) {
         int a = container[i * 2];
         int b = container[i * 2 + 1];
@@ -114,84 +132,93 @@ void PmergeMe::fordJohnsonSort(Container &container) {
             pairs.push_back(std::make_pair(b, a));
     }
 
-    //on rappelle la fonction en recursive pour trier les element les + grands tant que ya des pairs
-    Container mainChunk;
+    //on rappelle la fonction en recursif pour trier les elements les + grands tant quil y a des paires
     if (pairs.size() > 1) {
         Container biggerValues;
         for (size_t i = 0; i < pairs.size(); ++i)
             biggerValues.push_back(pairs[i].second); 
         fordJohnsonSort<Container>(biggerValues);
-        mainChunk = biggerValues;
+        mainContainer = biggerValues;
     }
     else if (pairs.size() == 1)
-        mainChunk.push_back(pairs[0].second);
+        mainContainer.push_back(pairs[0].second);
 
-    /* on stock mtn les petits elements dans un vecteur et grace a biggerValueForPosition (vecteur qui stock les grands elements a leur position de depart non trie)
-    on pourra retrouver leur paire pour faciliter l'insertion binaire plus tard */
-    std::vector<int> smallerValues;
-    std::vector<int> biggerValuesForPosition;
+    /*on stocke maintenant les petits elements dans un vecteur et grace a biggerValueForPosition 
+    (vecteur qui stocke les grands elements a leur position de depart non triee)
+    on pourra retrouver leur paire pour faciliter l'insertion binaire du petit plus tard */
     for (size_t i = 0; i < pairs.size(); ++i) {
         smallerValues.push_back(pairs[i].first);
-        biggerValuesForPosition.push_back(pairs[i].second);
+        biggerValuesPosition.push_back(pairs[i].second);
     }
-
-    //si impair, on cherche sa position et on l'insere
+    
+    //si ya un impair on cherche sa position et on l'insere
     if (hasOddNumber) {
-        int i = 0, size = mainChunk.size(), half;
+        int i = 0, size = mainContainer.size();
         while (i < size) {
             int half = (i + size) / 2;
-            if (mainChunk[half] < oddNumber)
+            if (mainContainer[half] < oddNumber)
                 i = half + 1;
             else 
                 size = half;
         }
-        mainChunk.insert(mainChunk.begin() + i, oddNumber);
+        mainContainer.insert(mainContainer.begin() + i, oddNumber);
     }
+}
 
-    //Générer la séquence d'insertion basée sur Jacobsthal
-    std::vector<int> IndexSmallValues;
-    IndexSmallValues.push_back(0); 
-    int jacobIndex = 1, prevJacob = 1;
-    while (IndexSmallValues.size() < smallerValues.size()) {
-        //Calculer le prochain nombre de Jacobsthal dans l'intervalle
-        int jacob = jacobsthalNumber(jacobIndex + 1);
+/* cette fonction sert a trouver ou vont les petites valeurs des paires puis les inserer
+    on stock dans whereToInsertSmallValues les index ou on inserera la valeur dans le mainContainer
+    -> les index sont trouves grace a la suite de jacobsthal qui va nous generer un ordre d'insertion 
+   
+    par exemple, pour jacobTotalValue = 11 et prevJacob = 5 on aura :
+    1) 1e for loop on ajoute '10' dans whereToInsertSmallValues (a la suite des index deja stockes) 
+        grace a la ligne -> whereToInsertSmallValues.push_back(jacobTotalValue - 1);
+    2) puis dans la 2e for loop on a i = (jacobTotalValue - 2); i > (prevJacob - 1); -> on va iterer de 9 a 4 
+        donc on ajoutera 9 8 7 6 5 mais pas 4 car 4 aura deja ete stocke auparavant 
+    3) apres cette etape on aura whereToInsertSmallValues : [0, 2, 1, 4, 3, 10, 9, 8, 7, 6, 5].
+        et donc le 1e element de smallValues sera inseree a la position 0 de mainContainer, 
+        le 3e element sera a la positon 1 de mainContainer
+        le 6e element en position 10, etc ...
 
-        if (jacob - 1 < smallerValues.size() && std::find(IndexSmallValues.begin(), IndexSmallValues.end(), jacob - 1) == IndexSmallValues.end())
-            IndexSmallValues.push_back(jacob - 1);
-        //Ajouter les indices entre le Jacobsthal précédent et le suivant, en ordre décroissant
-        for (int i = jacob - 2; i > (int)prevJacob - 1; --i) {
-            if (i >= 0 && (int)i < smallerValues.size() && std::find(IndexSmallValues.begin(), IndexSmallValues.end(), i) == IndexSmallValues.end())
-                IndexSmallValues.push_back(i);
+    et pour inserer chaque element dans mainContainer on utilise la recherche binaire pour minimiser les coups
+ */
+
+template <typename Container>
+void PmergeMe::binaryInsertSort(Container &mainContainer, const std::vector<int> &smallerValues, const std::vector<int> &biggerValuesPosition) {
+    std::vector<int> whereToInsertSmallValues;
+    whereToInsertSmallValues.push_back(0); 
+    int jacobTotalValue, jacobsthalIndex = 1, prevJacob = 1;
+    
+    while (whereToInsertSmallValues.size() < smallerValues.size()) {
+        jacobTotalValue = jacobsthalNumber(jacobsthalIndex + 1);
+        if (jacobTotalValue - 1 < smallerValues.size() && std::find(whereToInsertSmallValues.begin(), whereToInsertSmallValues.end(), jacobTotalValue - 1) == whereToInsertSmallValues.end())
+            whereToInsertSmallValues.push_back(jacobTotalValue - 1);
+    
+        for (int i = (jacobTotalValue - 2); i > (prevJacob - 1); --i) {
+            if (i >= 0 && i < smallerValues.size() && std::find(whereToInsertSmallValues.begin(), whereToInsertSmallValues.end(), i) == whereToInsertSmallValues.end())
+                whereToInsertSmallValues.push_back(i);
         }
-        prevJacob = jacob;
-        jacobIndex++;
+        prevJacob = jacobTotalValue;
+        jacobsthalIndex++;
     }
 
-    //Insérer les éléments selon l'ordre de Jacobsthal
-    for (int i = 0; i < IndexSmallValues.size() && i < smallerValues.size(); ++i) {
-        int idx = IndexSmallValues[i];
-        if (idx < smallerValues.size()) {
-            //Valeur à insérer
-            int value = smallerValues[idx];
+    //on insere les elements avec la binary search
+    int index, value, mainContainerSize, toInsert, mid;
+    for (int i = 0; i < whereToInsertSmallValues.size() && i < smallerValues.size(); ++i) {
+        index = whereToInsertSmallValues[i];
+        if (index < smallerValues.size()) {
+            value = smallerValues[index];
 
-            //Trouver l'index correspondant dans la chaîne principale
-            typename Container::iterator it = std::find(mainChunk.begin(), mainChunk.end(), biggerValuesForPosition[idx]);
-            int mainChunkPos = std::distance(mainChunk.begin(), it);
-
-            //Chercher la position correcte en utilisant la recherche binaire
-            int insertPos = 0, high = mainChunkPos + 1; //+1 car nous cherchons jusqu'à l'élément plus grand inclus
-
-            while (insertPos < high) {
-                int mid = (insertPos + high) / 2;
-                if (mainChunk[mid] < value)
-                    insertPos = mid + 1;
+            typename Container::iterator it = std::find(mainContainer.begin(), mainContainer.end(), biggerValuesPosition[index]);
+            mainContainerSize = std::distance(mainContainer.begin(), it);
+            toInsert = 0, size = mainContainerSize + 1;
+            while (toInsert < size) {
+                mid = (toInsert + size) / 2;
+                if (mainContainer[mid] < value)
+                    toInsert = mid + 1;
                 else
-                    high = mid;
+                    size = mid;
             }
-
-            //Insérer l'élément à la bonne position
-            mainChunk.insert(mainChunk.begin() + insertPos, value);
+            mainContainer.insert(mainContainer.begin() + toInsert, value);
         }
     }
-    container = mainChunk;
 }
